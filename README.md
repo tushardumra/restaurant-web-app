@@ -23,6 +23,3 @@ restaurant-app/
 cd server
 npm install
 npm run dev
-
-## API Docs
-http://localhost:5000/api-docs

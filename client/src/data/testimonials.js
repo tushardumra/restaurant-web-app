@@ -1,7 +1,4 @@
-import React from 'react'
-
-const Testimonials = ({ testimonial }) => {
-  const testimonialsData = [
+export const testimonials = [
   {
     id: 1,
     name: "Sarah Johnson",
@@ -43,18 +40,3 @@ const Testimonials = ({ testimonial }) => {
       "Their process is smooth, transparent, and highly effective. I’d gladly work with them again.",
   },
 ];
-  return (
-    <div>
-      <div>
-        <img src={testimonial.image} alt={testimonial.name} />
-        <div>
-          <h3>{testimonial.name}</h3>
-          <p>{testimonial.role}</p>
-        </div>
-      </div>
-      <p>{testimonial.review}</p>
-    </div>
-  )
-}
-
-export default Testimonials

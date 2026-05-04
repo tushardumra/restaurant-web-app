@@ -11,10 +11,10 @@ const StatsSection = () => {
             <h2 className='mb-2 font-semibold'>Proven</h2>
             <p className='text-3xl font-bold mb-4 md:text-4xl '>Numbers that speak for themselves</p>
           </div>
-          <div className="md:w-[50%]">
+          <div className="text-sm md:w-[50%]">
             {/* upper right side */}
             <div className='mb-6'>
-              <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis adipisci maxime suscipit! Ab sit enim nihil ratione maiores quibusdam.</p>
+              <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis adipisci maxime suscipit! Ab sit enim nihil ratione maiores quibusdam.</p>
             </div>
             <div className='flex items-center gap-5'>
               <a href="#" className="border px-4 py-2 rounded-md">Visit</a>
@@ -26,7 +26,7 @@ const StatsSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 grid-rows-3 gap-4 py-5 md:py-8 md:grid-cols-3 md:grid-rows-1">
+        <div className="grid grid-cols-1 grid-rows-3 gap-4 py-5 md:py-8 md:grid-cols-3 md:grid-rows-1 lg:gap-8">
           {/* lower box use grid */}
           <div className='border px-8 pb-8 pt-10  rounded-md md:text-center'>
             <div className='text-5xl font-bold mb-6'>

@@ -1,133 +1,120 @@
-import { useEffect, useRef, useState } from "react";
-import { testimonials } from "../data/testimonials";
-import TestimonialCard from "./TestimonialCard";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules"; // Added Navigation 🧭
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+const TESTIMONIALS = [
+  {
+    id: 1,
+    name: "Alex Rivera",
+    role: "Food Blogger",
+    text: "The Volcano Burger is actually life-changing. The heat is perfect.",
+  },
+  {
+    id: 2,
+    name: "Sarah Chen",
+    role: "Local Legend",
+    text: "Finally, a place that understands 'Bold.' The atmosphere is high-energy.",
+  },
+  {
+    id: 3,
+    name: "Marcus Thorne",
+    role: "Steak Enthusiast",
+    text: "That Bold Steak with garlic butter? I'll be dreaming about it for weeks.",
+  },
+  {
+    id: 4,
+    name: "Elena Rodriguez",
+    role: "Chef",
+    text: "Impeccable flavors and even better presentation. A must-visit!",
+  },
+  {
+    id: 5,
+    name: "Jake Miller",
+    role: "Vlogger",
+    text: "The neon aesthetic isn't just for show—the food actually backs it up.",
+  },
+];
 
 const TestimonialSlider = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [cardsToShow, setCardsToShow] = useState(3);
-
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-
-  // Responsive Cards Count
-
-  useEffect(() => {
-    const updateCardsToShow = () => {
-      if (window.innerWidth < 640) {
-        setCardsToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setCardsToShow(2);
-      } else {
-        setCardsToShow(3)
-      }
-    };
-
-    updateCardsToShow();
-    window.addEventListener("resize", updateCardsToShow);
-
-    return () => window.addEventListener("resize", updateCardsToShow);
-  },[]);
-
-  const maxIndex = testimonials.length - cardsToShow;
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  }
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => prev === 0 ? testimonials.length - 1: prev - 1 );
-  }
-
-  // Auto slide with pause on hover
-  
-  useEffect(() => {
-    if (isHovered) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isHovered, currentIndex, maxIndex]);
-
-  // Swipe support
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.changedTouches[0].screenX;
-  }
-
-  const handleTouchEnd = (e) => {
-    touchEndX.current = e.changedTouches[0].screenX;
-
-    const distance = touchStartX.current - touchEndX.current;
-
-    if (distance > 50) nextSlide();  // swipe left
-    if (distance < -50) prevSlide();  //swipe right
-  };
-
   return (
-    <section className="py-16 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold">What Our Clients Say</h2>
-          <p className="text-gray-600 mt-2">Real feedback from happy customers</p>
-        </div>
-
-        {/* Slider */}
-        <div className="relative overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className="flex transition-transform duration-500 ease-in-out gap-6"
-          style={{transform: `translateX(-${currentIndex * 100}%)`}}
-          >
-            { testimonials.map((testimonial) => 
-            <div
-            key={testimonial.id}
-            className="w-full sm:w-1/2 lg:w-1/3 shrink-0"
-            >
-              <TestimonialCard
-              testimonial={testimonial}
-            />
-            </div>
-            
-            )}
+    <section className="py-24 bg-brand-black text-white px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12 flex justify-between items-end">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">
+            What people say
+          </h2>
+          <p className="text-sm">Real customers, real meal, real talk</p>
           </div>
+          
 
-          {/* Buttons */}
-          {/* Prev Button */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center"
-          >
-            ←
-          </button>
-
-          {/* Next Button */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md w-10 h-10 rounded-full flex items-center justify-center"
-          >
-            →
-          </button>
+          {/* Custom Navigation Arrows Container (Hidden on Mobile) */}
+          <div className="hidden md:flex gap-4 mb-2">
+            <button className="nav-prev px-3 py-1 border-2  border-white/20 rounded-full hover:border-brand-orange hover:text-brand-orange transition-all cursor-pointer">
+              ❮
+            </button>
+            <button className="nav-next px-3 py-1 border-2 border-white/20 rounded-full hover:border-brand-orange hover:text-brand-orange transition-all cursor-pointer">
+              ❯
+            </button>
+          </div>
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center mt-6 gap-2">
-          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${currentIndex === index ? "bg-black w-6": "bg-gray-400"}`}
-            ></button>
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          spaceBetween={30}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation={{
+            prevEl: ".nav-prev",
+            nextEl: ".nav-next",
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-16"
+        >
+          {TESTIMONIALS.map((review) => (
+            <SwiperSlide key={review.id} className="h-full mb-10">
+              <div className="bg-brand-charcoal p-8 rounded-3xl relative h-full flex flex-col border border-white/5 hover:border-brand-orange/30 transition-colors">
+                <span className="text-6xl font-serif text-brand-orange opacity-40 leading-none">
+                  “
+                </span>
+                <p className="text-base font-medium leading-relaxed mb-6 grow">
+                  {review.text}
+                </p>
+                <div className="mt-auto">
+                  <h4 className="text-brand-orange font-bold">
+                    {review.name}
+                  </h4>
+                  <p className="text-gray-500 text-xs font-semibold">
+                    {review.role}
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
-    </section>
-  )
-}
 
-export default TestimonialSlider
+      {/* Modern Custom Styles */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .swiper-pagination-bullet { background: white !important; opacity: 0.3; }
+        .swiper-pagination-bullet-active { background: #FF5F00 !important; opacity: 1; width: 24px; border-radius: 4px; }
+        .nav-prev:disabled, .nav-next:disabled { opacity: 0.3; cursor: not-allowed; }
+      `,
+        }}
+      />
+    </section>
+  );
+};
+
+export default TestimonialSlider;

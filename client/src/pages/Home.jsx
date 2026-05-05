@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
 import StatsSection from "../components/StatsSection"
+import TestimonialCard from "../components/TestimonialCard"
 import Testimonials from "../components/Testimonials"
 import TestimonialSlider from "../components/TestimonialSlider"
 import WhyChooseUs from "../components/WhyChooseUs"
@@ -17,6 +18,7 @@ const Home = () => {
       <FoodCategories/>
       <WhyChooseUs/>
       <StatsSection/>
+      {/* <TestimonialCard/> */}
       <TestimonialSlider/>
       {/* <TestimonialSection/> */}
       <Footer/>

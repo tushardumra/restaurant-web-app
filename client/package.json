@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.2.2",
     "aos": "^2.3.4",
     "lucide-react": "^1.8.0",
@@ -19,6 +20,7 @@
     "react-router-dom": "^7.14.1",
     "react-scroll": "^1.9.3",
     "react-slick": "^0.31.0",
+    "remixicon": "^4.9.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^12.1.4",
     "tailwindcss": "^4.2.2"

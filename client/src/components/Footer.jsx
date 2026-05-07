@@ -1,30 +1,72 @@
-function Footer() {
+import mapPin from '../assets/icons/map-pin.svg'
+import { SiFacebook, SiInstagram, SiYoutube ,SiWhatsapp } from "react-icons/si";
+import { PiMapPinFill } from "react-icons/pi";
+import { MapPin, Phone,} from 'lucide-react';
+import { LuMapPin } from "react-icons/lu";
+
+import { PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
+
+const Footer = () => {
   return (
-    <div className="bg-gray-900 text-white p-6 rounded-t-lg">
-      <div className="grid grid-cols-2 gap-x-20 gap-y-10 mb-5 md:grid-cols-3 max-w-7xl mx-auto text-center">
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto p-6 py-12 flex justify-between flex-wrap md:px-8">
+        <div className="mb-8 md:w-60 md:mb-1 lg:w-70">
+          <h3 className="text-2xl font-black mb-6">Resta</h3>
+          <div className="">
+            <div className="flex mb-2">
+              {/* <MapPin size={36} /> */}
+              {/* <PiMapPinFill className=""/> */}
+              {/* <MapPin className='me-1 md:text-2xl'/> */}
 
-        <div>
-          <h3 className="font-bold">📍 Address</h3>
-          <p>123 Street, Your City</p>
+              {/* <img src={mapPin} alt="map-pin" className='h-7 w-7 text-white'/> */}
+              {/* <LuMapPin size={25}/> */}
+              <MapPinIcon className='h-8 mr-1.5 md:w-14'/>
+              <address>Building name, near mark, main road, city, dist. state, 123456</address>
+            </div>
+            <div className="flex mb-4 md:mb-10 lg:mb-14">
+              {/* <Phone size={18} className='me-1'/> */}
+              
+              <PhoneIcon className='h-5 mr-1.5 lg:h-5.5 lg:ps-1'/>
+              <a href="tel:+91 123 456 789">+91 123 456 789</a>
+            </div>
+            <div>
+              <h4 className='mb-2'>Connect with us</h4>
+              <div className="flex gap-4 *:text-xl">
+                <SiFacebook/>
+                <SiInstagram/>
+                <SiYoutube/>
+                <SiWhatsapp/>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="">
-          <h3 className="font-bold">🕒 Hours</h3>
-          <p>10 AM - 11 PM</p>
+        <div className="md:pt-13">
+          <h3 className="font-bold mb-2">Quick Links</h3>
+          <div>
+            <ul className="*:text-sm *:mb-1 *:tracking-wide">
+              <li>Home</li>
+              <li>About</li>
+              <li>Menu</li>
+              <li>Contact</li>
+            </ul>
+          </div>
         </div>
 
-        <div>
-          <h3 className="font-bold">📞 Contact</h3>
-          <p>+91 9876543210</p>
+        <div className="md:pt-13">
+          <h3 className="font-bold mb-2">Timmings</h3>
+          <p className="mb-2 text-sm md:mb-4">10 am to 11 pm</p>
+          <span className="bg-gray-200 text-green-700 py-1 px-2 rounded-md">Open</span>
         </div>
 
       </div>
-      <hr></hr>
-      <div className="flex justify-center pt-5">
-        <p className="text-sm">Developing by Tushar</p>
+      {/* <hr className=""/> */}
+      <div className="max-w-7xl mx-auto px-6 py-3 text-[12px] text-gray-500 flex justify-between border-t md:px-8">
+        <p>&copy;2026 Resta All rights reserved.</p>
+        <p>Developing by Tushar</p>
       </div>
-    </div>
-  );
+    </footer>
+  )
 }
 
-export default Footer;
+export default Footer

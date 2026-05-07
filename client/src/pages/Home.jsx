@@ -1,3 +1,4 @@
+import CTASection from "../components/CTASection"
 import FeatureItems from "../components/FeatureItems"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
@@ -21,6 +22,7 @@ const Home = () => {
       {/* <TestimonialCard/> */}
       <TestimonialSlider/>
       {/* <TestimonialSection/> */}
+      <CTASection/>
       <Footer/>
     </div>
   )

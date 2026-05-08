@@ -1,3 +1,4 @@
+import CategorySection from "../components/CategorySection"
 import CTASection from "../components/CTASection"
 import FeatureItems from "../components/FeatureItems"
 import Footer from "../components/Footer"
@@ -16,7 +17,8 @@ const Home = () => {
     <div>
       {/* <Header/> */}
       <Hero/>
-      <FoodCategories/>
+      <CategorySection/>
+      {/* <FoodCategories/> */}
       <WhyChooseUs/>
       <StatsSection/>
       {/* <TestimonialCard/> */}

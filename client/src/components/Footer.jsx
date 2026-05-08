@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto p-6 py-12 flex justify-between flex-wrap md:px-8">
         <div className="mb-8 md:w-60 md:mb-1 lg:w-70">
-          <h3 className="text-2xl font-black mb-6">Resta</h3>
+          <h3 className="text-2xl font-black mb-6">Logo</h3>
           <div className="">
             <div className="flex mb-2">
               {/* <MapPin size={36} /> */}
@@ -61,7 +61,7 @@ const Footer = () => {
 
       </div>
       {/* <hr className=""/> */}
-      <div className="max-w-7xl mx-auto px-6 py-3 text-[12px] text-gray-500 flex justify-between border-t md:px-8">
+      <div className="max-w-7xl mx-auto px-6 py-3 text-[12px] text-gray-500 flex justify-between border-t md:px-8 md:text-sm">
         <p>&copy;2026 Resta All rights reserved.</p>
         <p>Developing by Tushar</p>
       </div>

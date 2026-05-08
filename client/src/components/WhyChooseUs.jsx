@@ -4,14 +4,14 @@ import deliveryBoy from "../assets/icons/delivery-boy.png";
 
 const WhyChooseUs = () => {
   return (
-    <section className=" bg-gray-500">
-      <div className="lg:flex w-full max-w-7xl mx-auto px-2 sm:px-6 py-12">
-        <div className=" flex lg:w-[50%] flex-col justify-center p-4">
-          <h2 className="mb-3 sm:mb-4 sm:text-xl">Why Choose Us</h2>
-          <p className="mb-4 sm:mb-8 text-3xl sm:text-4xl font-bold">
+    <section className=" bg-brand-bgWhite py-18  px-4 md:py-24 md:px-6">
+      <div className="lg:flex lg:gap-18 w-full max-w-7xl mx-auto">
+        <div className="flex lg:w-[50%] flex-col justify-center p-2 mb-6">
+          <h2 className="mb-3 sm:mb-4 sm:text-xl font-semibold">Why Choose Us</h2>
+          <p className="mb-6 sm:mb-8 text-3xl sm:text-4xl font-black">
             We make best food in the Town
           </p>
-          <p className="text-sm">
+          <p className="">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex,
             aliquid eos blanditiis enim, ea quidem temporibus provident maxime
             eius accusamus fugiat cum quod voluptatem qui modi aliquam numquam
@@ -19,8 +19,8 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="px-4 py-4 flex flex-col gap-6 md:flex-row md:gap-12 md:py-10 lg:w-[50%] lg:gap-12 lg:flex-col lg:py-4">
-          <div className="flex gap-3 md:flex-col lg:flex-row">
+        <div className="px-4 py-4 flex flex-col gap-8 md:flex-row md:gap-12 md:py-10 lg:w-[50%] lg:gap-12 lg:flex-col lg:py-4">
+          <div className="flex gap-6 md:flex-col lg:flex-row">
             <img
               src={veggieBasket}
               alt=""
@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
             </div>
           </div>
 
-          <div className=" flex gap-3 md:flex-col lg:flex-row">
+          <div className=" flex gap-6 md:flex-col lg:flex-row">
             <img
               src={dineTable}
               alt=""
@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
             </div>
           </div>
 
-          <div className=" flex gap-3 md:flex-col lg:flex-row">
+          <div className=" flex gap-6 md:flex-col lg:flex-row">
             <img
               src={deliveryBoy}
               alt=""

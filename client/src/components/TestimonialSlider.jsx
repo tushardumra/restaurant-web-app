@@ -42,14 +42,14 @@ const TESTIMONIALS = [
 
 const TestimonialSlider = () => {
   return (
-    <section className="py-24 bg-brand-black text-white px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-18 px-4 md:py-24 md:px-6 bg-brand-bgWhite text-black relative overflow-hidden">
+      <div className="max-w-7xl mx-auto p-3">
         <div className="mb-12 flex justify-between items-end">
           <div>
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-black mb-3">
             What people say
           </h2>
-          <p className="text-sm">Real customers, real meal, real talk</p>
+          <p className="">Real customers, real meal, real talk</p>
           </div>
           
 
@@ -82,7 +82,7 @@ const TestimonialSlider = () => {
         >
           {TESTIMONIALS.map((review) => (
             <SwiperSlide key={review.id} className="h-full mb-10">
-              <div className="bg-brand-charcoal p-8 rounded-3xl relative h-full flex flex-col border border-white/5 hover:border-brand-orange/30 transition-colors">
+              <div className="bg-brand-charcoal p-8 rounded-2xl relative h-full flex flex-col border-2 border-gray-300 hover:border-brand-orange/30 transition-colors shadow-[10px_12px_5px_rgba(0,0,0,0.1)]">
                 <span className="text-6xl font-serif text-brand-orange opacity-40 leading-none">
                   “
                 </span>
@@ -90,7 +90,7 @@ const TestimonialSlider = () => {
                   {review.text}
                 </p>
                 <div className="mt-auto">
-                  <h4 className="text-brand-orange font-bold">
+                  <h4 className="text-brand-orange font-bold mb-1">
                     {review.name}
                   </h4>
                   <p className="text-gray-500 text-xs font-semibold">
@@ -107,7 +107,7 @@ const TestimonialSlider = () => {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .swiper-pagination-bullet { background: white !important; opacity: 0.3; }
+        .swiper-pagination-bullet { background: gray !important; opacity: 0.3; }
         .swiper-pagination-bullet-active { background: #FF5F00 !important; opacity: 1; width: 24px; border-radius: 4px; }
         .nav-prev:disabled, .nav-next:disabled { opacity: 0.3; cursor: not-allowed; }
       `,

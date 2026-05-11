@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
-      <div className="w-full relative z-10 flex flex-col justify-center items-center h-full gap-4 text-white px-6">
+      <div className="w-full relative z-10 flex flex-col justify-center items-center h-full gap-4 text-white px-6 pt-24">
         <h1
           data-aos="zoom-in"
           data-aos-delay="100"

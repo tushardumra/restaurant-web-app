@@ -66,7 +66,7 @@ const TestimonialSlider = () => {
 
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
-          spaceBetween={30}
+          spaceBetween={25}
           autoplay={{ delay: 6000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           navigation={{
@@ -81,8 +81,8 @@ const TestimonialSlider = () => {
           className="pb-16"
         >
           {TESTIMONIALS.map((review) => (
-            <SwiperSlide key={review.id} className="h-full mb-10">
-              <div className="bg-brand-charcoal p-8 rounded-2xl relative h-full flex flex-col border-2 border-gray-300 hover:border-brand-orange/30 transition-colors shadow-[10px_12px_5px_rgba(0,0,0,0.1)]">
+            <SwiperSlide key={review.id} className="h-full mb-15">
+              <div className="bg-brand-charcoal p-8 rounded-2xl relative h-full flex flex-col border-2 border-gray-300 hover:border-brand-orange/30 transition-colors shadow-[8px_8px_4px_rgba(0,0,0,0.1)]">
                 <span className="text-6xl font-serif text-brand-orange opacity-40 leading-none">
                   “
                 </span>

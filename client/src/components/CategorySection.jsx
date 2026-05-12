@@ -97,9 +97,9 @@ const CategorySection = () => {
           {FoodCards.map((card) => (
             <SwiperSlide
               key={card.id}
-              className="mb-15 shrink-0 bg-brand-bgWhite shadow-md overflow-hidden rounded-lg"
+              className="mb-15 shrink-0 bg-orange-500/80 shadow-md overflow-hidden rounded-lg"
             >
-              <div className="border-3 border-brand-bgWhite hover:border-brand-orange/90 transition-colors rounded-lg">
+              <div className="hover:scale-95 transition duration-300 rounded-2xl">
                 <img
                   src={card.image}
                   alt={card.title}

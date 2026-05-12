@@ -16,6 +16,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Prevents scroll lock bug
+    return () => {
+      document.body.style.overflow = "auto";
+    }
+  }, [menuOpen])
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       scrolled
@@ -55,9 +68,9 @@ const Navbar = () => {
         {/* Mobile Menu (Hamburger menu) */}
         <button
           className="md:hidden text-white text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setMenuOpen(true)}
         >
-          {menuOpen ? <FaTimes/> : <FaBars/>}
+          <FaBars/>
         </button>
 
         {/* CTA Button */}
@@ -66,14 +79,38 @@ const Navbar = () => {
         </button>
       </nav>
 
+      
+
+      {/* Mobile Sidebar Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-black/90 text-white px-6 py-4 space-y-4">
-          <a href="#home" className="block">Home</a>
-          <a href="#menu" className="block">Menu</a>
-          <a href="#about" className="block">About</a>
-          <a href="#contact" className="block">Contact</a>
-        </div>
+        <div
+        className="fixed inset-0 bg-black/80 backdrop-blur-md z-30 md:hidden"
+          onClick={() => setMenuOpen(false)}></div>
+
       )}
+
+      <div
+        className={`fixed top-0 left-0 h-screen w-full text-white transform transition-transform duration-500 ease-in-out z-40 
+        ${menuOpen ? "translate-x-0" : "-translate-x-full"} md:hidden`}
+      >
+        {/* Mobile Menu (Hamburger menu) */}
+        <button
+          className="md:hidden text-white text-2xl fixed top-7 right-7"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaTimes/>
+        </button>
+
+        
+      
+        {/* Menu content */}
+        <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-semibold">
+          <a href="#home" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="#menu" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>Menu</a>
+          <a href="#about" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#contact" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>Contact</a>
+        </div>
+      </div>
     </header>
   )
 }

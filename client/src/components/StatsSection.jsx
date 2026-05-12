@@ -17,7 +17,7 @@ const StatsSection = () => {
               <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis adipisci maxime suscipit! Ab sit enim nihil ratione maiores quibusdam.</p>
             </div>
             <div className='flex items-center gap-5'>
-              <a href="#" className="border px-6 py-2 rounded-md">Visit</a>
+              <a href="#" className="border px-6 py-2 rounded-xl">Visit</a>
               <div className='flex'>
                 <a href="#">Learn </a><ChevronRight strokeWidth={1.75} />
               </div>
@@ -28,7 +28,7 @@ const StatsSection = () => {
 
         <div className="grid grid-cols-1 grid-rows-3 gap-4 p-4 md:py-8 md:grid-cols-3 md:grid-rows-1 lg:gap-8">
           {/* lower box use grid */}
-          <div className='border px-8 pb-8 pt-10  rounded-md md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>15</span>
             </div>
@@ -38,7 +38,7 @@ const StatsSection = () => {
             </div>
           </div>
 
-          <div className='border px-8 pb-8 pt-10 rounded-md md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>50K</span>
             </div>
@@ -48,7 +48,7 @@ const StatsSection = () => {
             </div>
           </div>
 
-          <div className='border px-8 pb-8 pt-10 rounded-md md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>98%</span>
             </div>

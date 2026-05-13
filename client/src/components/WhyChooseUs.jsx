@@ -77,14 +77,14 @@ const WhyChooseUs = () => {
   className="py-20 px-6  bg-brand-bgWhite"
 >
   <div className="max-w-7xl mx-auto">
-    <div className="grid md:grid-cols-2 gap-12 items-center">
+    <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
     {/* Left Image */}
     <div>
       <img
         src="https://images.unsplash.com/photo-1691958215011-6800e0a058b0?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Restaurant"
-        className="rounded-2xl shadow-xl w-full object-cover"
+        className="rounded-2xl shadow-xl w-full object-cover md:h-120 lg:h-145"
       />
     </div>
 
@@ -94,40 +94,52 @@ const WhyChooseUs = () => {
         WHY CHOOSE US
       </p>
 
-      <h2 className="text-4xl font-bold mb-6">
+      <h2 className="text-3xl font-black mb-8 lg:text-4xl">
         We Serve The Best Dining Experience
       </h2>
 
-      <div className="space-y-6">
+      <div className="space-y-6 md:grid md:grid-cols-3 md:grid-rows-1 md:gap-5 md:space-y-0 lg:grid-cols-1 lg:grid-rows-3">
 
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <h3 className="font-semibold text-xl mb-2">
+        <div className="bg-white p-4 rounded-xl shadow-sm flex gap-5 md:flex-col md:p-5 lg:flex-row">
+          <img src={veggieBasket} alt="" className="h-12 w-12"/>
+          <div>
+            <h3 className="font-bold text-lg mb-1">
             Fresh Ingredients
           </h3>
 
           <p className="text-gray-600">
             Carefully selected fresh ingredients for every meal.
           </p>
+          </div>
+          
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <h3 className="font-semibold text-xl mb-2">
+        <div className="bg-white p-4 rounded-xl shadow-sm flex gap-5 md:flex-col md:p-5 lg:flex-row">
+          <img src={dineTable} alt="" className="h-12 w-12"/>
+          <div>
+            <h3 className="font-semibold text-lg mb-1">
             Expert Chefs
           </h3>
 
           <p className="text-gray-600">
             Experienced chefs creating unforgettable flavors.
           </p>
+          </div>
+          
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow-sm">
-          <h3 className="font-semibold text-xl mb-2">
+        <div className="bg-white p-4 rounded-xl shadow-sm flex gap-5 md:flex-col md:p-5 lg:flex-row">
+          <img src={deliveryBoy} alt="" className="h-12 w-12"/>
+          <div>
+            <h3 className="font-semibold text-lg mb-1">
             Fast Delivery
           </h3>
 
           <p className="text-gray-600">
             Hot and fresh meals delivered quickly.
           </p>
+          </div>
+          
         </div>
 
       </div>

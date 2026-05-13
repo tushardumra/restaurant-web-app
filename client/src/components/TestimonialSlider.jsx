@@ -46,7 +46,7 @@ const TestimonialSlider = () => {
       <div className="max-w-7xl mx-auto p-3">
         <div className="mb-12 flex justify-between items-end">
           <div>
-            <h2 className="text-3xl font-black mb-3">
+            <h2 className="text-4xl font-black mb-3">
             What people say
           </h2>
           <p className="">Real customers, real meal, real talk</p>

@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <ul className='hidden md:flex items-center gap-8 text-white font-medium'>
+        <ul className='hidden md:flex items-center gap-8 text-white font-semibold'>
           <li>
             <a href="#home" className='hover:text-orange-400 transition'>
               Home

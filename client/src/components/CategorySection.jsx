@@ -64,7 +64,7 @@ const CategorySection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 flex justify-between items-end">
           <div>
-            <h2 className="text-3xl font-black mb-4">What we make</h2>
+            <h2 className="text-4xl font-black mb-4">What we make</h2>
           </div>
 
           {/* Custom Navigation Arrows Container (Hidden on Mobile) */}

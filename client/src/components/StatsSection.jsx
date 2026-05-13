@@ -8,8 +8,8 @@ const StatsSection = () => {
           {/* upper box -- use flex */}
           <div className="md:w-[50%]">
             {/* upper left side */}
-            <h2 className='mb-3 font-semibold'>Proven</h2>
-            <p className='text-3xl font-black mb-6 md:text-4xl'>Numbers that speak <br/> for themselves</p>
+            <h2 className='mb-2 font-semibold text-orange-500'>Proven</h2>
+            <p className='text-3xl font-black mb-6 md:text-4xl'>Numbers that speak for themselves</p>
           </div>
           <div className="md:w-[50%]">
             {/* upper right side */}
@@ -28,7 +28,7 @@ const StatsSection = () => {
 
         <div className="grid grid-cols-1 grid-rows-3 gap-4 p-4 md:py-8 md:grid-cols-3 md:grid-rows-1 lg:gap-8">
           {/* lower box use grid */}
-          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-500/85 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>15</span>
             </div>
@@ -38,7 +38,7 @@ const StatsSection = () => {
             </div>
           </div>
 
-          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-500/85 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>50K</span>
             </div>
@@ -48,7 +48,7 @@ const StatsSection = () => {
             </div>
           </div>
 
-          <div className='px-8 pb-8 pt-10 bg-orange-400/90 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
+          <div className='px-8 pb-8 pt-10 bg-orange-500/85 shadow-[8px_8px_4px_rgba(0,0,0,0.1)] rounded-2xl md:text-center'>
             <div className='text-5xl font-bold mb-6'>
               <span>98%</span>
             </div>

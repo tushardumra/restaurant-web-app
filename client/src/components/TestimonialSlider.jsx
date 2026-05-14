@@ -82,7 +82,7 @@ const TestimonialSlider = () => {
         >
           {TESTIMONIALS.map((review) => (
             <SwiperSlide key={review.id} className="h-full mb-15">
-              <div className="bg-brand-charcoal p-8 rounded-2xl relative h-full flex flex-col border-2 border-gray-300 hover:border-brand-orange/30 transition-colors shadow-[8px_8px_4px_rgba(0,0,0,0.1)]">
+              <div className="bg-brand-charcoal px-6 py-8 rounded-2xl relative h-full flex flex-col border-2 border-gray-300 hover:border-brand-orange/30 transition-colors shadow-[8px_8px_4px_rgba(0,0,0,0.1)]">
                 <span className="text-6xl font-serif text-brand-orange opacity-40 leading-none">
                   “
                 </span>

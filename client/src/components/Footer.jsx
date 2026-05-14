@@ -45,10 +45,10 @@ const Footer = () => {
           <h3 className="font-bold mb-2">Quick Links</h3>
           <div>
             <ul className="*:text-sm *:mb-1 *:tracking-wide">
-              <li>Home</li>
-              <li>About</li>
-              <li>Menu</li>
-              <li>Contact</li>
+              <li className='hover:text-gray-400 cursor-pointer transition-all duration-300'>Home</li>
+              <li className='hover:text-gray-400 cursor-pointer transition-all duration-300'>About</li>
+              <li className='hover:text-gray-400 cursor-pointer transition-all duration-300'>Menu</li>
+              <li className='hover:text-gray-400 cursor-pointer transition-all duration-300'>Contact</li>
             </ul>
           </div>
         </div>
@@ -61,7 +61,7 @@ const Footer = () => {
 
       </div>
       {/* <hr className=""/> */}
-      <div className="max-w-7xl mx-auto px-6 py-3 text-[12px] text-gray-500 flex justify-between border-t md:px-8 md:text-sm">
+      <div className="max-w-7xl mx-auto px-6 py-3 text-[12px] text-gray-300 flex justify-between border-t md:px-8 md:text-sm">
         <p>&copy;2026 Resta All rights reserved.</p>
         <p>Developing by Tushar</p>
       </div>

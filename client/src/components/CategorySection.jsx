@@ -81,7 +81,7 @@ const CategorySection = () => {
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={15}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           navigation={{
             prevEl: ".nav-prev",
@@ -99,7 +99,7 @@ const CategorySection = () => {
               key={card.id}
               className="mb-15 shrink-0 bg-orange-500/80 shadow-md overflow-hidden rounded-lg"
             >
-              <div className="hover:scale-95 transition duration-300 rounded-2xl">
+              <div className="hover:scale-105 hover:shadow-xl transition duration-300 rounded-2xl">
                 <img
                   src={card.image}
                   alt={card.title}

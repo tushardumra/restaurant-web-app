@@ -4,6 +4,24 @@ import { useState } from "react";
 const LoginForm = ({ setIsLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+  }
+
   return (
     <div>
       {/* Heading */}
@@ -15,7 +33,7 @@ const LoginForm = ({ setIsLogin }) => {
       </div>
 
       {/* Form */}
-      <form className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email Field */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -28,6 +46,9 @@ const LoginForm = ({ setIsLogin }) => {
             />
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter your email"
               className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
@@ -46,6 +67,9 @@ const LoginForm = ({ setIsLogin }) => {
             />
             <input
               type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Enter your password"
               className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />

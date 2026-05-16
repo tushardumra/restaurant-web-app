@@ -11,7 +11,11 @@ const specs = require("./config/swagger")
 
 const app = express(); // Create an instance of an Express application
 
-app.use(cors()); // CORS middleware to handle Cross-Origin Resource Sharing
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+  })
+); // CORS middleware to handle Cross-Origin Resource Sharing
 app.use(express.json()); // Middleware to parse incoming JSON requests
 app.use(cookieParser()); // Middleware to parse cookies from incoming requests
 

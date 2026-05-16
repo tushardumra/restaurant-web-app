@@ -15,14 +15,28 @@ const RegisterForm = ({ setIsLogin }) => {
 
   const [errors, setErrors] = useState({});
 
+  const [loading, setLoading] = useState(false);
+
+  const [serverError, setServerError] = useState("")
+
   const handleChange = (e) => {
+    const {name, value} = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Remove error while typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      })
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErros = {};
@@ -57,7 +71,55 @@ const RegisterForm = ({ setIsLogin }) => {
       return;
     }
 
-    console.log(formData);
+    setServerError("")
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        "http://localhost:5000/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+
+          body: JSON.stringify({
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      console.log(data);
+      
+    } catch (error) {
+      
+      const backendErrors = 
+        error.response?.data?.errors;
+
+      if (backendErrors && backendErrors.length > 0) {
+        const formattedErrors = {};
+
+        backendErrors.forEach((err) => {
+          formattedErrors[err.path] = err.msg;
+        });
+
+        setErrors(formattedErrors);
+      } else {
+        setServerError(
+          error.response?.data?.message || 
+          "Something went wrong"
+        );
+      }
+
+    } finally {
+      setLoading(false);
+    }
+
   };
 
   return (
@@ -70,6 +132,14 @@ const RegisterForm = ({ setIsLogin }) => {
           Join Foodie and enjoy delicious meals anytime.
         </p>
       </div>
+
+      {
+        serverError && (
+          <div className="bg-red-100 text-red-600 px-4 py-3 rounded-xl mb-6 text-sm">
+            {serverError}
+          </div>
+        )
+      }
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -198,9 +268,10 @@ const RegisterForm = ({ setIsLogin }) => {
         {/* Register Button */}
         <button
           type="submit"
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition duration-300"
+          disabled={loading}
+          className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-orange-300 text-white py-3 rounded-xl font-semibold transition duration-300"
         >
-          Create Account
+          {loading ? "Create Account..." : "Create Account"}
         </button>
       </form>
 

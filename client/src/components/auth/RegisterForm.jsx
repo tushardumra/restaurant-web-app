@@ -71,9 +71,10 @@ const RegisterForm = ({ setIsLogin }) => {
       return;
     }
 
-    setServerError("")
+    
     try {
       setLoading(true);
+      setServerError("");
 
       const response = await fetch(
         "http://localhost:5000/api/auth/register",
@@ -94,28 +95,32 @@ const RegisterForm = ({ setIsLogin }) => {
 
       const data = await response.json();
 
+      // HANDLE BACKEND VALIDATION ERRORS
+      if (!response.ok) {
+      
+        if (data.errors) {
+          const formattedErrors = {};
+
+          data.errors.forEach((err) => {
+            formattedErrors[err.path] = err.msg;
+          });
+
+          setErrors(formattedErrors);
+        } else {
+          setServerError(data.message);
+        }
+
+        return;
+      }
+
+      // SUCCESS 
       console.log(data);
       
     } catch (error) {
-      
-      const backendErrors = 
-        error.response?.data?.errors;
 
-      if (backendErrors && backendErrors.length > 0) {
-        const formattedErrors = {};
-
-        backendErrors.forEach((err) => {
-          formattedErrors[err.path] = err.msg;
-        });
-
-        setErrors(formattedErrors);
-      } else {
-        setServerError(
-          error.response?.data?.message || 
-          "Something went wrong"
-        );
-      }
-
+      console.log(error);
+      setServerError("Something went wrong");
+    
     } finally {
       setLoading(false);
     }

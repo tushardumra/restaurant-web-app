@@ -5,9 +5,13 @@ const LoginForm = ({ setIsLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    email: "",
+    identifier: "",
     password: "",
   });
+
+  const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -16,9 +20,58 @@ const LoginForm = ({ setIsLogin }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    try {
+      setLoading(true);
+      setServerError("");
+      setErrors({});
+
+      const response = await fetch(
+        "http://localhost:5000/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          credentials: "include",
+
+          body: JSON.stringify({
+            identifier: formData.identifier,
+            password: formData.password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      // HANDLE ERRORS 
+      if (!response.ok) {
+        if (data.errors) {
+          const formattedErrors = {};
+
+          data.erros.forEach(err => {
+            formattedErrors[err.path] = err.msg;
+          });
+
+          setErrors(formattedErrors);
+        } else {
+          setServerError(data.message);
+        }
+        return;
+      }
+
+      // SUCCESS
+      console.log(data);
+
+    } catch (error) {
+      console.log(error);
+      setServerError("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
     console.log(formData);
   }
 
@@ -31,6 +84,12 @@ const LoginForm = ({ setIsLogin }) => {
           Login to continue ordering delicious food.
         </p>
       </div>
+
+      {serverError && (
+        <div className="bg-red-100 text-red-600 px-4 py-3 rounded-xl mb-4 text-sm">
+          {serverError}
+        </div>
+      )}
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -46,13 +105,20 @@ const LoginForm = ({ setIsLogin }) => {
             />
             <input
               type="email"
-              name="email"
-              value={formData.email}
+              name="identifier"
+              value={formData.identifier}
               onChange={handleChange}
               placeholder="Enter your email"
               className="w-full border border-gray-300 rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
+          {
+            errors.identifier && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.identifier}
+              </p>
+            )
+          }
         </div>
 
         {/* Password Field */}
@@ -83,6 +149,11 @@ const LoginForm = ({ setIsLogin }) => {
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </div>
+          {errors.password && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password}
+            </p>
+          )}
         </div>
 
         {/* Forgot Password */}

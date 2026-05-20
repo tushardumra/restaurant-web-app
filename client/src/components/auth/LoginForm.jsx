@@ -66,6 +66,15 @@ const LoginForm = ({ setIsLogin }) => {
       // SUCCESS
       console.log(data);
 
+      // Clearing form input fields
+      setFormData({
+        identifier: "",
+        password: "",
+      });
+
+      // Clearing old validation messages
+      setErrors({});
+
     } catch (error) {
       console.log(error);
       setServerError("Something went wrong");
@@ -96,7 +105,7 @@ const LoginForm = ({ setIsLogin }) => {
         {/* Email Field */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Email Address
+            Email or Username
           </label>
           <div className="relative">
             <Mail
@@ -104,7 +113,7 @@ const LoginForm = ({ setIsLogin }) => {
               className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
             />
             <input
-              type="email"
+              type="text"
               name="identifier"
               value={formData.identifier}
               onChange={handleChange}

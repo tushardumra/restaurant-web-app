@@ -17,7 +17,9 @@ const RegisterForm = ({ setIsLogin }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const [serverError, setServerError] = useState("")
+  const [serverError, setServerError] = useState("");
+
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -75,6 +77,7 @@ const RegisterForm = ({ setIsLogin }) => {
     try {
       setLoading(true);
       setServerError("");
+      setSuccessMessage("");
 
       const response = await fetch(
         "http://localhost:5000/api/auth/register",
@@ -115,6 +118,23 @@ const RegisterForm = ({ setIsLogin }) => {
 
       // SUCCESS 
       console.log(data);
+
+      setSuccessMessage("Registration successful!")
+
+      // Clearing form input fields
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      })
+
+      // Clearing old validation messages
+      setErrors({});
+
+      setTimeout(() => {
+        setIsLogin(true);
+      }, 1000);
       
     } catch (error) {
 
@@ -145,6 +165,20 @@ const RegisterForm = ({ setIsLogin }) => {
           </div>
         )
       }
+
+      {successMessage && (
+        <div className="bg-green-100 text-green-600 px-4 py-3 rounded-xl mb-6 text-sm">
+        {successMessage}
+        </div>
+        )}
+       
+      {/* {
+        successMessage && (
+          <div className="bg-green-100 text-green-600 px-4 py-3 rounded-xl mb-6 text-sm">
+            {successMessage}
+          </div>
+        )
+      } */}
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">

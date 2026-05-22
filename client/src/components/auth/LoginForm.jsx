@@ -1,7 +1,10 @@
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginForm = ({ setIsLogin }) => {
+  const { setUser } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -65,6 +68,7 @@ const LoginForm = ({ setIsLogin }) => {
 
       // SUCCESS
       console.log(data);
+      setUser(data.user);
 
       // Clearing form input fields
       setFormData({

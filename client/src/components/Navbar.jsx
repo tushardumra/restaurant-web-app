@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -73,10 +76,19 @@ const Navbar = () => {
           <FaBars/>
         </button>
 
-        {/* CTA Button */}
-        <button className='hidden md:block bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-lg transition'>
-          Order Now
-        </button>
+        {/* Login/SignUp Button */}
+        <Link
+          to="/auth"
+          className="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
+        >
+          Login
+        </Link>
+        
+        {user && (
+          <p>
+            {user.username}
+          </p>
+        )}
       </nav>
 
       

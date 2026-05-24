@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, setUser, authLoading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,6 +31,10 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     }
   }, [menuOpen])
+
+  if (authLoading) {
+    return null;
+  }
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -68,6 +72,14 @@ const Navbar = () => {
           </li>
         </ul>
 
+        {/* Login/SignUp Button
+        <Link
+          to="/auth"
+          className="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
+        >
+          Login
+        </Link> */}
+
         {/* Mobile Menu (Hamburger menu) */}
         <button
           className="md:hidden text-white text-2xl"
@@ -77,18 +89,29 @@ const Navbar = () => {
         </button>
 
         {/* Login/SignUp Button */}
-        <Link
-          to="/auth"
-          className="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
-        >
-          Login
-        </Link>
-        
-        {user && (
-          <p>
-            {user.username}
-          </p>
-        )}
+        {
+          user ? (
+            <div className="flex items-center gap-4">
+              <p className="text-white font-medium">
+                Hello, {user.username}
+              </p>
+
+              <button
+                onClick={() => setUser(null)}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
+            >
+              Login
+            </Link>
+          )
+        }
       </nav>
 
       

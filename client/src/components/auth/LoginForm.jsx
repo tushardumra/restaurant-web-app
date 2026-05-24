@@ -1,6 +1,7 @@
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ setIsLogin }) => {
   const { setUser } = useAuth();
@@ -15,6 +16,8 @@ const LoginForm = ({ setIsLogin }) => {
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -69,6 +72,8 @@ const LoginForm = ({ setIsLogin }) => {
       // SUCCESS
       console.log(data);
       setUser(data.user);
+
+      navigate("/");
 
       // Clearing form input fields
       setFormData({

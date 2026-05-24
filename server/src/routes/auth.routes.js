@@ -5,7 +5,9 @@ const authValidation = require("../validators/auth.validator");
 const authController = require('../controllers/auth.controller');  
 
 // Create a new router instance to define routes related to authentication
-const router = express.Router();   
+const router = express.Router();
+
+const { protect } = require("../middlewares/auth.middleware");
 
 // Define the route for user registration and login, linking them to the respective controller functions
 
@@ -78,5 +80,7 @@ router.post('/register', authValidation.registerValidation, authController.regis
  *         description: Invalid credentials
  */
 router.post('/login', authValidation.loginValidation, authController.loginUser);
+
+router.get("/me", protect, authController.getCurrentUser);
 
 module.exports = router;

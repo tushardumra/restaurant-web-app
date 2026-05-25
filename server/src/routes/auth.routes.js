@@ -83,4 +83,6 @@ router.post('/login', authValidation.loginValidation, authController.loginUser);
 
 router.get("/me", protect, authController.getCurrentUser);
 
+router.post("/logout", authController.logoutUser);
+
 module.exports = router;

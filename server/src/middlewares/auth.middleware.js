@@ -6,16 +6,20 @@ const User = require("../models/user.model");
 const protect = (req, res, next) => {
   
   try {
+    console.log("COOKIE:", req.cookies);
     const token = req.cookies.token; // get token from cookies
   
+    console.log("TOKEN:", token);
     if (!token) {
       // if doesn't have token
       return res.status(401).json({ message: "Not authorized, no token" });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY); // token verification
 
+    console.log("DECODED:", decoded);
     const user = User.findById(decoded.id).select("-password"); 
 
+    console.log("USER:", user);
     if (!user) {
       return res.status(401).json({
         message: "User not found",
@@ -24,11 +28,15 @@ const protect = (req, res, next) => {
 
     req.user = user;  // store decoded token value in req.user for later use
 
+    console.log("USER:", user)
     next();
     
   } catch (error) {
-    console.log(error);
-    return res.status(401).json({ message: "Invalid token, token failed" });
+    console.log("MIDDLEWARE ERROR:",error);
+    return res.status(500).json({
+      message: "Middleware crashed",
+    });
+    // return res.status(401).json({ message: "Invalid token, token failed" });
   }
 };
 

@@ -92,7 +92,11 @@ const loginUser = async (req, res) => {
     { expiresIn: "1d" }
   );
 
-  res.cookie("token", token); // now save this token in browser's cookie storage
+  res.cookie("token", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: false,
+  }); // now save this token in browser's cookie storage
 
   res.status(200).json({
     // at last give success msg and user info
@@ -108,11 +112,13 @@ const loginUser = async (req, res) => {
 
 const getCurrentUser = async (req, res) => {
   try {
+    console.log(req.user);
     res.status(200).json({
       user: req.user,
     });
 
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: "Server Error",
     });

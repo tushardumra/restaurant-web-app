@@ -1,5 +1,6 @@
 const express = require('express');
 const authValidation = require("../validators/auth.validator");
+const User = require("../models/user.model");
 
 // Import the auth controller to handle registration and login logic   
 const authController = require('../controllers/auth.controller');  

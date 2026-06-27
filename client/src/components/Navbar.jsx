@@ -136,10 +136,10 @@ const Navbar = () => {
         </button>
 
         <div className="fixed top-17 left-5">
-          <h1 className= "text-2xl font-serif font-bold">Welcome to Foodie!</h1>
+          <h1 className="text-2xl font-serif font-bold">Welcome to Foodie!</h1>
           {/* Login/SignUp Button */}
           {user ? (
-            <div className="flex items-center gap-10">
+            <div className="flex gap-5 items-center">
               <p className="text-white font-medium">Hello, {user.username}</p>
 
               <button
@@ -151,26 +151,30 @@ const Navbar = () => {
 
                   setUser(null);
                 }}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                className=" text-orange-500 underline text-sm py-2 hover:text-red-600 transition"
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-4">
-              <h3 className="text-left">
-                {/* <span></span> */}
-                <br />
-                Please login or signup to order your food.
-              </h3>
-              <div className="flex flex-col items-center justify-center h-full">
+            <div className="flex gap-5 items-center">
+              <p className="py-1.5">
+                Please{" "}
                 <Link
                   to="/auth"
-                  className=" text-white py-2 rounded-lg hover:bg-orange-600 transition"
+                  className=" text-orange-500 underline text-sm hover:text-orange-600 transition"
                 >
-                  Login / Signup
-                </Link>
-              </div>
+                  Login
+                </Link>{" "}
+                or{" "}
+                <Link
+                  to="/auth"
+                  className=" text-orange-500 underline text-sm hover:text-orange-600 transition"
+                >
+                  Sign Up
+                </Link>{" "}
+                to order your food.
+              </p>
             </div>
           )}
         </div>

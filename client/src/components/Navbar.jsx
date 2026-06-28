@@ -54,9 +54,9 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#menu" className="hover:text-orange-400 transition">
+            <Link to="/menu" className="hover:text-orange-400 transition">
               Menu
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#about" className="hover:text-orange-400 transition">

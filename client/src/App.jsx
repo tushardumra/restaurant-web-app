@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import Auth from './pages/Auth'
+import Menu from "./pages/Menu";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       {/* HOME ROUTES */}
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="menu" element={<Menu/>} />
       </Route>
 
       {/* AUTH ROUTES */}

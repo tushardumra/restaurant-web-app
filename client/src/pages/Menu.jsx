@@ -71,7 +71,7 @@ const Menu = () => {
         <div className="mb-8">Categories</div>
 
         {/* <div>Food Cards</div> */}
-        <div className="bg-brand-bgWhite p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className=" p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
           {foods.length === 0 ? (
             <p className="text-gray-600 col-span-full text-center">
@@ -90,12 +90,6 @@ const Menu = () => {
             ))
           )}
 
-          {/* <FoodCard/> */}
-          {/* <FoodCard/>
-          <FoodCard/>
-          <FoodCard/>
-          <FoodCard/>
-          <FoodCard/> */}
         </div>
       </div>
     </section>

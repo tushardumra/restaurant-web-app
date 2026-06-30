@@ -4,7 +4,7 @@ const foodModel = require("../models/food.model");
 const addFood = async (req, res) => {
   try {
     console.log("BODY:", req.body);
-    const { name, price, category, image, stock } = req.body;
+    const { name, price, category, description, image, stock } = req.body;
 
     const isfoodNameAlreadyExists = await foodModel.findOne({ name });
 
@@ -18,6 +18,7 @@ const addFood = async (req, res) => {
       name,
       price,
       category,
+      description,
       image,
       stock,
     });

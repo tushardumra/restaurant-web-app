@@ -49,9 +49,9 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 text-white font-semibold">
           <li>
-            <a href="#home" className="hover:text-orange-400 transition">
+            <Link to="/" className="hover:text-orange-400 transition">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <Link to="/menu" className="hover:text-orange-400 transition">
@@ -181,20 +181,23 @@ const Navbar = () => {
 
         {/* Menu content */}
         <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-semibold">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="hover:text-orange-400 transition duration-300"
             onClick={() => setMenuOpen(false)}
           >
             Home
-          </a>
-          <a
+          </Link>
+          {/* <a
             href="#menu"
             className="hover:text-orange-400 transition duration-300"
             onClick={() => setMenuOpen(false)}
           >
             Menu
-          </a>
+          </a> */}
+          <Link to="/menu" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>
+              Menu
+            </Link>
           <a
             href="#about"
             className="hover:text-orange-400 transition duration-300"

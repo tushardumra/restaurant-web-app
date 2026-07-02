@@ -19,7 +19,7 @@ router.post(
   foodController.addFood,
 );
 
-// Route to get all food items,  anyone can see food menu (admin, staff and user)
+// Route to get all food items, anyone can see food menu (admin, staff and user)
 router.get("/", foodController.getAllFood);
 
 // Route to update food item, only admin can update food item

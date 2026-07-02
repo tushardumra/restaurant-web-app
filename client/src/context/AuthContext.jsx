@@ -67,9 +67,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
   const checkAuth = async () => {
     try {
-      console.log("🔍 Checking auth...");
+      // console.log("🔍 Checking auth...");
       const res = await axios.get("http://localhost:5000/api/auth/me", { withCredentials: true });
-      console.log("✅ /me response:", res.data);
+      // console.log("✅ /me response:", res.data);
       setUser(res.data.user);
       // console.log("User name: ", user)
     } catch (error) {

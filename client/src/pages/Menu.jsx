@@ -10,6 +10,8 @@ const Menu = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
+  const [sortBy, setSortBy] = useState("");
+
   useEffect(() => {
     // console.log("useEffect running");
     fetchFoods();
@@ -89,15 +91,20 @@ const Menu = () => {
         </p>
 
         {/* <div className="mb-8">Search Bar</div> */}
+        
         <div className="mb-8">
           <input
             type="text"
             placeholder="Search for food..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border border-gray-300 rounded-xl p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+            className="w-full border text-gray-300 border-gray-300 rounded-xl p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
           />
         </div>
+
+        
+
+        
 
         {/* <div className="mb-8">Categories</div> */}
         <div className="flex gap-3 overflow-x-auto mb-4 pb-2 no-scrollbar">
@@ -117,6 +124,19 @@ const Menu = () => {
           ))}
         </div>
 
+        {/* <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="border text-gray-300 border-gray-300 rounded-xl px-4 py-2 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+          // className="mb-8 w-full border border-gray-300 rounded-xl p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+          >
+          <option value="">Sort By</option> 
+          <option value="priceLow">Price: Low to High</option>
+          <option value="priceHigh">Price: High to Low</option>
+          <option value="nameAZ">Name: A-Z</option>
+          <option value="newest">Newest</option>
+        </select> */}
+
         {/* <div>Food Cards</div> */}
         <div className="p-2 sm:p-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {filteredFoods.length === 0 ? (
@@ -133,6 +153,7 @@ const Menu = () => {
                 description={food.description}
                 price={food.price}
                 imageUrl={food.imageUrl}
+                stock={food.stock}
               />
             ))
           )}

@@ -1,7 +1,12 @@
-const FoodCard = ({ name, description, price, imageUrl, category }) => {
+const FoodCard = ({ name, description, price, imageUrl, category, stock }) => {
+
+  const handleBuyNow = () => {
+    console.log("Buy Now clicked");
+  }
+
   return (
     <div>
-      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300">
         <div className="h-42 sm:h-52 overflow-hidden">
           <img
             src={imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"}
@@ -10,17 +15,38 @@ const FoodCard = ({ name, description, price, imageUrl, category }) => {
           />
         </div>
         <div className="p-3 sm:p-4 ">
-          <span className="inline-block bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs lg:text-sm font-semibold mb-3">
+          <div className="flex items-center gap-1 sm:gap-2 justify-baseline flex-wrap mb-3">
+          <span className="inline-block bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">
             {category}
           </span>
+
+          <span className="">
+            {stock > 0 ? (
+              <span className="inline-block text-green-600 bg-green-100 px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">In Stock</span>
+            ) : (
+              <span className="inline-block text-red-600 bg-red-100 px-3 py-1 rounded-full text-xs lg:text-sm font-semibold">Out of Stock</span>
+            )}
+          </span>
+          </div>
+          
           <h3 className="text-sm sm:text-lg lg:text-xl font-bold mb-2">{name}</h3>
           <p className="text-gray-600 text-xs sm:text-sm mb-4">
             {description}
           </p>
           <div className="flex items-center justify-between">
             <p className="text-lg sm:text-xl  font-bold text-orange-500">₹{price}</p>
-            <button className="bg-orange-500 text-white px-2 sm:px-4 py-1 sm:py-2 text-sm rounded-lg hover:bg-orange-600 transition">
-              Buy Now
+            <button
+              disabled={stock <= 0}
+              onClick={handleBuyNow}
+              className={`
+                px-2 sm:px-4 py-1 sm:py-2 text-sm rounded-lg transition
+                ${
+                  stock > 0
+                  ? "bg-orange-500 text-white hover:bg-orange-600"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }`}
+              >
+              {stock > 0 ? "Buy Now" : "Unavailable"}
             </button>
           </div>
         </div>
@@ -30,3 +56,5 @@ const FoodCard = ({ name, description, price, imageUrl, category }) => {
 };
 
 export default FoodCard;
+
+

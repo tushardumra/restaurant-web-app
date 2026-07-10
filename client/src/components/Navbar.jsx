@@ -2,12 +2,21 @@ import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
   const { user, setUser, authLoading } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { cartItems } = useContext(CartContext);
+  console.log("Cart items in Navbar:", cartItems);
+
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity, 0
+  )
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,6 +78,39 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+        
+        {/* Shopping Cart Icon */}
+        <Link
+  to="/cart"
+  className="relative text-white"
+>
+  Cart
+
+  {cartCount > 0 && (
+    <span
+      className="
+        absolute
+        -top-2
+        -right-4
+        bg-orange-500
+        text-white
+        text-xs
+        rounded-full
+        w-5
+        h-5
+        flex
+        items-center
+        justify-center
+      "
+    >
+      {cartCount}
+    </span>
+  )}
+</Link>
+
+        {/* <p className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
+          {cartItems.length}
+        </p> */}
 
         {/* Login/SignUp Button
         <Link

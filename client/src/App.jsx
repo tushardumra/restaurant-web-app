@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import MainLayout from "./layouts/MainLayout";
 import Auth from './pages/Auth'
 import Menu from "./pages/Menu";
+import Cart from "./pages/Cart";
 
 const App = () => {
   return (
@@ -12,12 +13,16 @@ const App = () => {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="menu" element={<Menu />} />
+        
       </Route>
+        <Route path="/cart" element={<Cart />} />
 
       {/* AUTH ROUTES */}
       <Route path="/auth" element={<Auth/>}/>
       
     </Routes>
+
+    
   );
 };
 

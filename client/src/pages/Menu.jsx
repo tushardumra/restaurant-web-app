@@ -148,6 +148,7 @@ const Menu = () => {
             filteredFoods.map((food) => (
               <FoodCard
                 key={food._id}
+                _id={food._id}
                 name={food.name}
                 category={food.category}
                 description={food.description}

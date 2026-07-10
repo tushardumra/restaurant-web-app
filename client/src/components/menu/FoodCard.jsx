@@ -1,7 +1,21 @@
-const FoodCard = ({ name, description, price, imageUrl, category, stock }) => {
+import {useContext} from "react";
+import { CartContext } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-  const handleBuyNow = () => {
-    console.log("Buy Now clicked");
+const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) => {
+
+  const { addToCart } = useContext(CartContext);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    if (!user) {
+      alert("Please login to add items to your cart.");
+      navigate("/auth");
+      return;
+    }
+    addToCart({ _id, name, price, imageUrl });
   }
 
   return (
@@ -37,7 +51,7 @@ const FoodCard = ({ name, description, price, imageUrl, category, stock }) => {
             <p className="text-lg sm:text-xl  font-bold text-orange-500">₹{price}</p>
             <button
               disabled={stock <= 0}
-              onClick={handleBuyNow}
+              onClick={handleAddToCart}
               className={`
                 px-2 sm:px-4 py-1 sm:py-2 text-sm rounded-lg transition
                 ${

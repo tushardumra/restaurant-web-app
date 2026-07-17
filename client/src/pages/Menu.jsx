@@ -36,7 +36,7 @@ const Menu = () => {
       }
 
       const data = await response.json();
-      // console.log("Data:", data);
+      console.log("Data:", data);
       setFoods(data.foods || []); // Ensure foods is an array
     } catch (error) {
       // console.log("ERROR:", error);
@@ -83,22 +83,22 @@ const Menu = () => {
   ];
 
   return (
-    <section className="min-h-screen pt-24 px-4 md:px-8">
-      <div className=" max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">Our Menu</h1>
-        <p className="text-gray-600 mb-8">
+    <section className="min-h-screen bg-linear-to-t from-amber-200 to-amber-300 pt-24 px-4 md:px-8">
+      <div className=" max-w-7xl mx-auto md:my-6 xl:my-12 text-white">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">Our Menu</h1>
+        <p className="mb-5">
           Explore our delicious dishes and beverages.
         </p>
 
         {/* <div className="mb-8">Search Bar</div> */}
         
-        <div className="mb-8">
+        <div className="mb-6">
           <input
             type="text"
             placeholder="Search for food..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full border text-gray-300 border-gray-300 rounded-xl p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+            className="w-full text-white border-2 border-white rounded-xl p-2 md:p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
           />
         </div>
 
@@ -107,16 +107,16 @@ const Menu = () => {
         
 
         {/* <div className="mb-8">Categories</div> */}
-        <div className="flex gap-3 overflow-x-auto mb-4 pb-2 no-scrollbar">
+        <div className="flex gap-3 overflow-x-auto mb-3 pb-2 no-scrollbar">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full whitespace-nowrap transition-all
+              className={`text-md px-2.5 py-1.5 md:px-4 md:py-2 border-0 rounded-full whitespace-nowrap transition-all
         ${
           selectedCategory === category
-            ? "bg-orange-500 text-white"
-            : "bg-white text-gray-700 border"
+            ? "bg-orange-400 text-white"
+            : "bg-amber-100 text-gray-700 border"
         }`}
             >
               {category}

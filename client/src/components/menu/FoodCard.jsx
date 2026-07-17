@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) => {
 
+  console.log(name)
   const { addToCart } = useContext(CartContext);
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
   return (
     <div>
       <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300">
-        <div className="h-42 sm:h-52 overflow-hidden">
+        <div className="h-42 sm:h-40 overflow-hidden">
           <img
             src={imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"}
             alt={name}
@@ -43,7 +44,7 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
           </span>
           </div>
           
-          <h3 className="text-sm sm:text-lg lg:text-xl font-bold mb-2">{name}</h3>
+          <h3 className="text-gray-700 text-sm sm:text-lg lg:text-xl font-bold mb-2">{name}</h3>
           <p className="text-gray-600 text-xs sm:text-sm mb-4">
             {description}
           </p>

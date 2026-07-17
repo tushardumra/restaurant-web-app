@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { MdOutlineShoppingBag } from "react-icons/md";
 
 const Navbar = () => {
   const { user, setUser, authLoading } = useAuth();
@@ -14,9 +15,7 @@ const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   console.log("Cart items in Navbar:", cartItems);
 
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity, 0
-  )
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,12 +50,12 @@ const Navbar = () => {
         scrolled ? "bg-black/70 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto py-4 px-4 md:px-8 xl:px-0 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl text-white font-bold">Foodie</div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 text-white font-semibold">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8 text-white font-semibold">
           <li>
             <Link to="/" className="hover:text-orange-400 transition">
               Home
@@ -78,17 +77,15 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-        
-        {/* Shopping Cart Icon */}
-        <Link
-  to="/cart"
-  className="relative text-white"
->
-  Cart
 
-  {cartCount > 0 && (
-    <span
-      className="
+        {/* Shopping Cart Icon */}
+        <div className="flex items-center gap-2">
+        <Link to="/cart" className="relative text-white text-3xl">
+          <MdOutlineShoppingBag />
+
+          {cartCount > 0 && (
+            <span
+              className="
         absolute
         -top-2
         -right-4
@@ -102,11 +99,11 @@ const Navbar = () => {
         items-center
         justify-center
       "
-    >
-      {cartCount}
-    </span>
-  )}
-</Link>
+            >
+              {cartCount}
+            </span>
+          )}
+        </Link>
 
         {/* <p className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
           {cartItems.length}
@@ -130,7 +127,7 @@ const Navbar = () => {
 
         {/* Login/SignUp Button */}
         {user ? (
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-2">
             <p className="text-white font-medium">Hello, {user.username}</p>
 
             <button
@@ -150,11 +147,12 @@ const Navbar = () => {
         ) : (
           <Link
             to="/auth"
-            className="hidden md:block bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
+            className="hidden md:block font-semibold border-0 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition-all duration-300"
           >
-            Login
+            Login / Sign up
           </Link>
         )}
+        </div>
       </nav>
 
       {/* Mobile Sidebar Menu */}
@@ -237,9 +235,13 @@ const Navbar = () => {
           >
             Menu
           </a> */}
-          <Link to="/menu" className="hover:text-orange-400 transition duration-300" onClick={() => setMenuOpen(false)}>
-              Menu
-            </Link>
+          <Link
+            to="/menu"
+            className="hover:text-orange-400 transition duration-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            Menu
+          </Link>
           <a
             href="#about"
             className="hover:text-orange-400 transition duration-300"

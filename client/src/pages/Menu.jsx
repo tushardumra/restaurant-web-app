@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FoodCard from "../components/menu/FoodCard";
+import Footer from "../components/Footer";
 
 const Menu = () => {
   // console.log("Menu component rendered");
@@ -83,8 +84,9 @@ const Menu = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-linear-to-t from-amber-200 to-amber-300 pt-24 px-4 md:px-8">
-      <div className=" max-w-7xl mx-auto md:my-6 xl:my-12 text-white">
+    <>
+    <section className="min-h-screen bg-linear-to-t from-amber-200 to-amber-300 py-24 px-4 md:px-8">
+      <div className=" max-w-7xl mx-auto sm:my-8 md:my-12 lg:my-14 xl:my-18 text-white">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Our Menu</h1>
         <p className="mb-5">
           Explore our delicious dishes and beverages.
@@ -103,9 +105,6 @@ const Menu = () => {
         </div>
 
         
-
-        
-
         {/* <div className="mb-8">Categories</div> */}
         <div className="flex gap-3 overflow-x-auto mb-3 pb-2 no-scrollbar">
           {categories.map((category) => (
@@ -138,7 +137,7 @@ const Menu = () => {
         </select> */}
 
         {/* <div>Food Cards</div> */}
-        <div className="p-2 sm:p-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        <div className="p-2 sm:p-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
           {filteredFoods.length === 0 ? (
             <div className="text-center col-span-full py-00 sm:py-20">
               <h3 className="text-xl font-semibold">No food found</h3>
@@ -161,6 +160,9 @@ const Menu = () => {
         </div>
       </div>
     </section>
+
+    <Footer/>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import veggieBasket from "../assets/icons/vegetable-basket.png";
 import dineTable from "../assets/icons/dinning-table.png";
+import chefHat from "../assets/icons/chef.png";
 import deliveryBoy from "../assets/icons/delivery-boy.png";
 
 const WhyChooseUs = () => {
@@ -115,7 +116,7 @@ const WhyChooseUs = () => {
         </div>
 
         <div className="bg-white p-4 rounded-xl shadow-sm flex gap-5 md:flex-col md:p-5 lg:flex-row">
-          <img src={dineTable} alt="" className="h-12 w-12"/>
+          <img src={chefHat} alt="" className="h-12 w-12"/>
           <div>
             <h3 className="font-semibold text-lg mb-1">
             Expert Chefs

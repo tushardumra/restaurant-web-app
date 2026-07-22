@@ -67,9 +67,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="#about" className="hover:text-orange-400 transition">
+            <Link to="/about" className="hover:text-orange-400 transition">
               About
-            </a>
+            </Link>
+            {/* <a href="#about" >
+              About
+            </a> */}
           </li>
           <li>
             <a href="#contact" className="hover:text-orange-400 transition">
@@ -79,7 +82,7 @@ const Navbar = () => {
         </ul>
 
         {/* Shopping Cart Icon */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 sm:gap-2">
         <Link to="/cart" className="relative text-white text-3xl">
           <MdOutlineShoppingBag />
 
@@ -242,13 +245,13 @@ const Navbar = () => {
           >
             Menu
           </Link>
-          <a
-            href="#about"
+          <Link
+            to="/about"
             className="hover:text-orange-400 transition duration-300"
             onClick={() => setMenuOpen(false)}
           >
             About
-          </a>
+          </Link>
           <a
             href="#contact"
             className="hover:text-orange-400 transition duration-300"

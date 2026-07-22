@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import heroimg from "../assets/heroimg.avif";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 

@@ -1,4 +1,4 @@
-import ctaVideo from '../assets/videos/video-for-cta-tiny.mp4'
+import ctaImage from "../assets/imageforCTA.avif"
 
 const CTASection = () => {
   return (
@@ -40,13 +40,13 @@ const CTASection = () => {
           Delicious meals delivered hot and fresh right to your doorstep.
         </p>
 
-        <div className="flex md:flex-wrap gap-4 justify-center lg:justify-start">
+        <div className="flex flex-col sm:flex-row md: justify-center lg:justify-start gap-4 mt-8 md:mb-4">
 
           <button className="bg-white text-orange-500 px-5 py-4 md:px-8 md:py-4 rounded-xl font-semibold hover:scale-105 transition">
             Order Now
           </button>
 
-          <button className="border border-white px-5 py-4 md:px-8 md:py-4 rounded-xl hover:bg-white hover:text-orange-500 transition">
+          <button className="border-2 border-white px-6 py-4 md:px-9 md:py-4 rounded-xl hover:bg-white hover:text-orange-500 transition font-semibold">
             Reserve
           </button>
 
@@ -56,7 +56,7 @@ const CTASection = () => {
       {/* Right Image */}
       <div className="hidden md:block md:order-1 lg:order-2">
         <img
-          src="https://images.unsplash.com/photo-1652862730506-9f7310faabbd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZvb2QlMjBkZWxpdmVyeSUyMGJveHxlbnwwfDB8MHx8fDI%3D"
+          src={ctaImage}
           alt="Food"
           className="md:h-60 lg:h-full w-full object-cover"
         />
@@ -65,7 +65,7 @@ const CTASection = () => {
     </div>
 
   </div>
-</section>
+    </section>
   )
 }
 

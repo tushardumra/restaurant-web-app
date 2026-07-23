@@ -42,7 +42,7 @@ const TESTIMONIALS = [
 
 const TestimonialSlider = () => {
   return (
-    <section className="py-18 px-4 md:py-24 md:px-6 bg-brand-bgWhite text-black relative overflow-hidden">
+    <section className="py-15 px-4 md:py-24 md:px-6 bg-brand-bgWhite text-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto p-3">
         <div className="mb-12 flex justify-between items-end">
           <div>

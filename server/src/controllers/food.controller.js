@@ -49,6 +49,30 @@ const getAllFood = async (req, res) => {
   }
 };
 
+// Controller function to get one food item, when user click on that food card
+const getFoodById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const food = await foodModel.findById(id);
+
+    if (!food) {
+      return res.status(404).json({
+        message: "Food not found",
+      });
+    }
+
+    res.status(200).json(food);
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server Error in fetching food",
+    })
+  }
+}
+
 // Controller function to update food item, only admin can update food item
 const updateFood = async (req, res) => {
   try {
@@ -90,4 +114,6 @@ const deleteFood = async (req, res) => {
   }
 };
 
-module.exports = { addFood, getAllFood, updateFood, deleteFood };
+
+
+module.exports = { addFood, getAllFood, getFoodById, updateFood, deleteFood  };

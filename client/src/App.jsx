@@ -6,6 +6,7 @@ import Auth from './pages/Auth'
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
+import FoodDetails from "./pages/foodDetails";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="about" element={<About />} />
       </Route>
         <Route path="/cart" element={<Cart />} />
+        <Route path="/food/:id" element={<FoodDetails />}/>
 
       {/* AUTH ROUTES */}
       <Route path="/auth" element={<Auth/>}/>

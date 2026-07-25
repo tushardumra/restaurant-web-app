@@ -2,7 +2,7 @@ import {useContext} from "react";
 import { CartContext } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) => {
 
@@ -22,6 +22,7 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
 
   return (
     <div>
+      <Link to={`/food/${_id}`}>
       <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300">
         <div className="h-42 sm:h-40 overflow-hidden">
           <img
@@ -67,6 +68,7 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
           </div>
         </div>
       </div>
+      </Link>
     </div>
   );
 };

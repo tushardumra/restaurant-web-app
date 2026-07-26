@@ -12,6 +12,7 @@ createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <CartProvider>
         <App />
+        
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>

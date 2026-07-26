@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const FoodDetails = () => {
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
 
   const [food, setFood] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,6 +84,7 @@ const FoodDetails = () => {
               )}
             </div>
             <button
+              onClick={() => addToCart(food)}
               className="
     mt-8
     bg-orange-500

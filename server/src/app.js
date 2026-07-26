@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth.routes"); // import from auth.routes.j
 const protectedRoute = require("./middlewares/auth.middleware");
 const foodRoutes = require("./routes/food.routes");
 const orderRoutes = require("./routes/order.routes");
+const uploadRoutes = require("./routes/upload.routes");
 
 const swaggerUi = require("swagger-ui-express");
 const specs = require("./config/swagger")
@@ -64,5 +65,7 @@ app.use("/api/food", foodRoutes);    // Use the food routes for any requests to 
 app.use("/api/orders", orderRoutes);   // Use the order routes for any requests to /api/orders
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+app.use("/api/upload", uploadRoutes);
 
 module.exports = app;

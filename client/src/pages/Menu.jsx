@@ -37,7 +37,7 @@ const Menu = () => {
       }
 
       const data = await response.json();
-      console.log("Data:", data);
+      // console.log("Data:", data);
       setFoods(data.foods || []); // Ensure foods is an array
     } catch (error) {
       // console.log("ERROR:", error);

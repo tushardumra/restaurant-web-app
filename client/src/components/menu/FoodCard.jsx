@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) => {
 
-  console.log(name)
+  // console.log(name)
   const { addToCart } = useContext(CartContext);
   const { user } = useAuth();
   const navigate = useNavigate();

@@ -24,8 +24,40 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const increaseQuantity = (foodId) => {
+    setCartItems((prevItems) => 
+      prevItems.map((item) =>
+        item._id === foodId
+          ? {
+            ...item,
+            quantity: item.quantity + 1,
+          }
+          : item
+      )
+    );
+  }
+
+  const decreaseQuantity = (foodId) => {
+    setCartItems((prevItems) => 
+      prevItems.map((item) => 
+        item._id === foodId
+        ? {
+          ...item,
+          quantity: item.quantity - 1,
+        } : item
+      )
+      .filter((item) => item.quantity > 0)
+    );
+  }
+
+  const removeFromCart = (foodId) => {
+    setCartItems((prevItems) => 
+      prevItems.filter((item) => item._id !== foodId)
+    );
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, addToCart, setCartItems, increaseQuantity, decreaseQuantity, removeFromCart, }}>
       {children}
     </CartContext.Provider>
   );

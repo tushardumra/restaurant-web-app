@@ -15,7 +15,7 @@ const Navbar = () => {
   const { cartItems } = useContext(CartContext);
   console.log("Cart items in Navbar:", cartItems);
 
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalCartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,12 +86,12 @@ const Navbar = () => {
         <Link to="/cart" className="relative text-white text-3xl">
           <MdOutlineShoppingBag />
 
-          {cartCount > 0 && (
+          {totalCartCount > 0 && (
             <span
               className="
         absolute
         -top-2
-        -right-4
+        -right-2
         bg-orange-500
         text-white
         text-xs
@@ -103,7 +103,7 @@ const Navbar = () => {
         justify-center
       "
             >
-              {cartCount}
+              {totalCartCount}
             </span>
           )}
         </Link>

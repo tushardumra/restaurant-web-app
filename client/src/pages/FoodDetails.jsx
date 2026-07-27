@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import Navbar from "../components/Navbar";
 
 const FoodDetails = () => {
   const { id } = useParams();
@@ -46,6 +47,8 @@ const FoodDetails = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <section className="pt-28 pb-16 px-4 ">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -102,6 +105,7 @@ const FoodDetails = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

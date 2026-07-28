@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 
 const FoodDetails = () => {
@@ -9,6 +10,9 @@ const FoodDetails = () => {
 
   const [food, setFood] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { authUser } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchFood();
@@ -41,6 +45,15 @@ const FoodDetails = () => {
       setLoading(false);
     }
   };
+
+  const handleAddToCart = () => {
+    if (!authUser) {
+      navigate("/auth");
+      return;
+    }
+
+    addToCart(food);
+  }
 
   if (loading || !food) {
     return <div className="pt-28 text-center">Loading...</div>;
@@ -87,7 +100,7 @@ const FoodDetails = () => {
               )}
             </div>
             <button
-              onClick={() => addToCart(food)}
+              onClick={handleAddToCart}
               className="
     mt-8
     bg-orange-500

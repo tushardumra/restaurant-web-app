@@ -11,7 +11,8 @@ const FoodDetails = () => {
   const [food, setFood] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { authUser } = useAuth();
+  const { user } = useAuth();
+  console.log("User from AuthContext:", user);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,11 +47,18 @@ const FoodDetails = () => {
     }
   };
 
+  
+
   const handleAddToCart = () => {
-    if (!authUser) {
-      navigate("/auth");
-      return;
-    }
+    console.log("User when clicking Add To Cart:", user);
+
+  if (!user) {
+    console.log("Redirecting to auth");
+    navigate("/auth");
+    return;
+  }
+
+  console.log("Adding to cart");
 
     addToCart(food);
   }

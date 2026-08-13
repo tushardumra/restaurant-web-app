@@ -1,18 +1,51 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Checkout = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, clearCart } = useContext(CartContext);
+
+  console.log("Cart Items in Checkout:", cartItems); // Debugging line to check cart items
+
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = async () => {
+    try {
+      const orderData = {
+        items: cartItems.map((item) => ({
+          food: item._id,
+          quantity: item.quantity,
+        })),
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/api/orders",
+        orderData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log(response.data);
+      clearCart();
+      navigate("/order-success")
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
-  if (cartItems.length === 0) {
-    return <Navigate to="/menu" />;
-  }
+  // if (cartItems.length === 0) {
+  //   return <Navigate to="/menu" />;
+  // }
 
   return (
     <section className="pt-28 pb-16 px-4">
@@ -54,6 +87,21 @@ const Checkout = () => {
             Total: ${totalAmount}
           </h2>
         </div>
+        <button
+          onClick={handlePlaceOrder}
+          className="
+            mt-6
+            bg-orange-500
+            text-white
+            px-6
+            py-3
+            rounded-xl
+            hover:bg-orange-600
+            transition
+          "
+        >
+          Place Order
+        </button>
       </div>
     </section>
   );

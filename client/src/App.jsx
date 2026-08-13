@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import About from "./pages/About";
 import FoodDetails from "./pages/foodDetails";
 import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/food/:id" element={<FoodDetails />}/>
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
 
       {/* AUTH ROUTES */}
       <Route path="/auth" element={<Auth/>}/>

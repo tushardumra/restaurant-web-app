@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { MdOutlineShoppingBag } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+
 
 const Navbar = () => {
   const { user, setUser, authLoading } = useAuth();
@@ -12,10 +14,15 @@ const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
   const { cartItems } = useContext(CartContext);
   console.log("Cart items in Navbar:", cartItems);
 
-  const totalCartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalCartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +51,15 @@ const Navbar = () => {
     return null;
   }
 
+  const handleLogout = async () => {
+    await fetch("http://localhost:5000/api/auth/logout", {
+                          method: "POST",
+                          credentials: "include",
+                        });
+
+                        setUser(null);
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -70,25 +86,29 @@ const Navbar = () => {
             <Link to="/about" className="hover:text-orange-400 transition">
               About
             </Link>
-            {/* <a href="#about" >
-              About
-            </a> */}
           </li>
           <li>
             <a href="#contact" className="hover:text-orange-400 transition">
               Contact
             </a>
           </li>
+          {/* {user ? (
+            <li>
+              <Link to="/my-orders" className="hover:text-orange-400 transition">
+                My Orders
+              </Link>
+            </li>
+          ) : null} */}
         </ul>
 
         {/* Shopping Cart Icon */}
         <div className="flex items-center gap-3 sm:gap-2">
-        <Link to="/cart" className="relative text-white text-3xl">
-          <MdOutlineShoppingBag />
+          <Link to="/cart" className="relative text-white text-3xl">
+            <MdOutlineShoppingBag />
 
-          {totalCartCount > 0 && (
-            <span
-              className="
+            {totalCartCount > 0 && (
+              <span
+                className="
         absolute
         -top-2
         -right-2
@@ -102,17 +122,17 @@ const Navbar = () => {
         items-center
         justify-center
       "
-            >
-              {totalCartCount}
-            </span>
-          )}
-        </Link>
+              >
+                {totalCartCount}
+              </span>
+            )}
+          </Link>
 
-        {/* <p className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
+          {/* <p className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
           {cartItems.length}
         </p> */}
 
-        {/* Login/SignUp Button
+          {/* Login/SignUp Button
         <Link
           to="/auth"
           className="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition"
@@ -120,41 +140,104 @@ const Navbar = () => {
           Login
         </Link> */}
 
-        {/* Mobile Menu (Hamburger menu) */}
-        <button
-          className="md:hidden text-white text-2xl"
-          onClick={() => setMenuOpen(true)}
-        >
-          <FaBars />
-        </button>
-
-        {/* Login/SignUp Button */}
-        {user ? (
-          <div className="hidden md:flex items-center gap-2">
-            <p className="text-white font-medium">Hello, {user.username}</p>
-
-            <button
-              onClick={async () => {
-                await fetch("http://localhost:5000/api/auth/logout", {
-                  method: "POST",
-                  credentials: "include",
-                });
-
-                setUser(null);
-              }}
-              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          <Link
-            to="/auth"
-            className="hidden md:block font-semibold border-0 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition-all duration-300"
+          {/* Mobile Navbar (Hamburger icon) */}
+          <button
+            className="md:hidden text-white text-2xl"
+            onClick={() => setMenuOpen(true)}
           >
-            Login / Sign up
-          </Link>
-        )}
+            <FaBars />
+          </button>
+
+          {/* Login/SignUp Button */}
+          {user ? (
+            <div className="hidden md:flex items-center gap-2">
+              {/* <p className="text-white font-medium">Hello, {user.username}</p> */}
+
+              {/* <button
+                onClick={async () => {
+                  await fetch("http://localhost:5000/api/auth/logout", {
+                    method: "POST",
+                    credentials: "include",
+                  });
+
+                  setUser(null);
+                }}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+              >
+                Logout
+              </button> */}
+
+              <div className="relative">
+  <button
+    onClick={() =>
+      setShowUserMenu(!showUserMenu)
+    }
+    className="
+      flex
+      items-center
+      gap-2
+      font-medium
+      cursor-pointer
+      text-white
+    "
+  >
+    <FaRegUser />
+ Hello, {user.username || user.name}
+  </button>
+
+  {showUserMenu && (
+    <div
+      className="
+        absolute
+        right-0
+        mt-3
+        w-48
+        bg-white
+        rounded-xl
+        shadow-lg
+        border
+        overflow-hidden
+        z-50
+      "
+    >
+
+      <Link
+        to="/my-orders"
+        className="
+          block
+          px-4
+          py-3
+          hover:bg-gray-100
+        "
+      >
+        My Orders
+      </Link>
+
+      <button
+        onClick={handleLogout}
+        className="
+          w-full
+          text-left
+          px-4
+          py-3
+          hover:bg-gray-100
+        "
+      >
+        Logout
+      </button>
+
+    </div>
+  )}
+</div>
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="hidden md:block font-semibold border-0 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition-all duration-300"
+            >
+              Login / Sign up
+            </Link>
+          )}
         </div>
       </nav>
 
@@ -183,9 +266,9 @@ const Navbar = () => {
           {/* Login/SignUp Button */}
           {user ? (
             <div className="flex gap-5 items-center">
-              <p className="text-white font-medium">Hello, {user.username}</p>
+              {/* <p className="text-white font-medium">Hello, {user.username}</p> */}
 
-              <button
+              {/* <button
                 onClick={async () => {
                   await fetch("http://localhost:5000/api/auth/logout", {
                     method: "POST",
@@ -197,7 +280,73 @@ const Navbar = () => {
                 className=" text-orange-500 underline text-sm py-2 hover:text-red-600 transition"
               >
                 Logout
-              </button>
+              </button> */}
+
+              <div className="relative">
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="
+      flex
+      items-center
+      gap-2
+      font-medium
+      cursor-pointer
+    "
+                >
+                  👤 Hello, {user.name}
+                </button>
+
+                {showUserMenu && (
+                  <div
+                    className="
+        absolute
+        right-0
+        mt-3
+        w-48
+        bg-white
+        rounded-xl
+        shadow-lg
+        border
+        overflow-hidden
+        z-50
+      "
+                  >
+                    <Link
+                      to="/my-orders"
+                      onClick={() => setShowUserMenu(false)}
+                      className="
+          block
+          px-4
+          py-3
+          hover:bg-gray-100
+        "
+                    >
+                      My Orders
+                    </Link>
+
+                    <button
+                      onClick={handleLogout}
+                      // onClick={async () => {
+                      //   await fetch("http://localhost:5000/api/auth/logout", {
+                      //     method: "POST",
+                      //     credentials: "include",
+                      //   });
+
+                      //   setUser(null);
+                      // }}
+                      className="
+          w-full
+          text-left
+          px-4
+          py-3
+          hover:bg-gray-100
+        "
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             <div className="flex gap-5 items-center">
@@ -259,6 +408,13 @@ const Navbar = () => {
           >
             Contact
           </a>
+          {/* <Link
+            to="/my-orders"
+            className="hover:text-orange-400 transition duration-300"
+            onClick={() => setMenuOpen(false)}
+          >
+            My Orders
+          </Link> */}
         </div>
       </div>
     </header>

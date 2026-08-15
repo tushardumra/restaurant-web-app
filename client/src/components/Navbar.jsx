@@ -7,6 +7,10 @@ import { CartContext } from "../context/CartContext";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+
 
 const Navbar = () => {
   const { user, setUser, authLoading } = useAuth();
@@ -103,8 +107,10 @@ const Navbar = () => {
 
         {/* Shopping Cart Icon */}
         <div className="flex items-center gap-3 sm:gap-2">
-          <Link to="/cart" className="relative text-white text-3xl">
-            <MdOutlineShoppingBag />
+          <Link to="/cart" className="relative text-white">
+            {/* <MdOutlineShoppingBag /> */}
+            <LocalMallOutlinedIcon />
+            {/* <ShoppingBagOutlinedIcon/> */}
 
             {totalCartCount > 0 && (
               <span
@@ -168,45 +174,46 @@ const Navbar = () => {
               </button> */}
 
               <div className="relative">
-  <button
-    onClick={() =>
-      setShowUserMenu(!showUserMenu)
-    }
-    className="
-      flex
-      items-center
-      gap-2
-      font-medium
-      cursor-pointer
-      text-white
-    "
-  >
-    <FaRegUser />
- Hello, {user.username || user.name}
-  </button>
+                <button
+                  onClick={() =>
+                    setShowUserMenu(!showUserMenu)
+                  }
+                  className="
+                    flex
+                    items-center
+                    gap-2
+                    font-medium
+                    cursor-pointer
+                    text-white
+                  "
+                >
+                {/* <FaRegUser className="font-bold"/> */}
+                <AccountCircleOutlinedIcon/>
+            Hello, {user.username || user.name}
+              </button>
 
-  {showUserMenu && (
-    <div
-      className="
-        absolute
-        right-0
-        mt-3
-        w-48
-        bg-white
-        rounded-xl
-        shadow-lg
-        border
-        overflow-hidden
-        z-50
-      "
-    >
+              {showUserMenu && (
+                <div
+                  className="
+                    absolute
+                    right-0
+                    mt-3
+                    w-38
+                    bg-white
+                    rounded-lg
+                    shadow-lg
+                    border
+                    overflow-hidden
+                    z-50
+                  "
+                >
 
       <Link
         to="/my-orders"
         className="
           block
           px-4
-          py-3
+          py-2
           hover:bg-gray-100
         "
       >
@@ -219,7 +226,7 @@ const Navbar = () => {
           w-full
           text-left
           px-4
-          py-3
+          py-2
           hover:bg-gray-100
         "
       >
@@ -228,7 +235,7 @@ const Navbar = () => {
 
     </div>
   )}
-</div>
+              </div>
             </div>
           ) : (
             <Link
@@ -282,7 +289,7 @@ const Navbar = () => {
                 Logout
               </button> */}
 
-              <div className="relative">
+              <div className="relative mt-1">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
                   className="
@@ -293,18 +300,18 @@ const Navbar = () => {
       cursor-pointer
     "
                 >
-                  👤 Hello, {user.name}
+                  <AccountCircleOutlinedIcon/> Hello, {user.username || user.name}
                 </button>
 
                 {showUserMenu && (
                   <div
                     className="
         absolute
-        right-0
         mt-3
-        w-48
+        w-88
         bg-white
-        rounded-xl
+        text-black
+        rounded-lg
         shadow-lg
         border
         overflow-hidden
@@ -372,7 +379,7 @@ const Navbar = () => {
         </div>
 
         {/* Menu content */}
-        <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-semibold">
+        <div className="flex flex-col pt-20 items-center justify-center h-full gap-8 text-2xl font-semibold">
           <Link
             to="/"
             className="hover:text-orange-400 transition duration-300"
@@ -380,13 +387,7 @@ const Navbar = () => {
           >
             Home
           </Link>
-          {/* <a
-            href="#menu"
-            className="hover:text-orange-400 transition duration-300"
-            onClick={() => setMenuOpen(false)}
-          >
-            Menu
-          </a> */}
+          
           <Link
             to="/menu"
             className="hover:text-orange-400 transition duration-300"

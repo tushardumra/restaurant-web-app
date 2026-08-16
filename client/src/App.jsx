@@ -10,6 +10,11 @@ import FoodDetails from "./pages/foodDetails";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import MyOrders from "./pages/MyOrders";
+import Dashboard from "./pages/admin/Dashboard";
+import Foods from "./pages/admin/Foods";
+import Orders from "./pages/admin/Orders";
+import Analytics from "./pages/admin/Analytics";
+
 
 const App = () => {
   return (
@@ -28,7 +33,12 @@ const App = () => {
 
       {/* AUTH ROUTES */}
       <Route path="/auth" element={<Auth/>}/>
-      
+
+      <Route path="/admin" element={<Dashboard/>} />
+      <Route path="/admin/foods" element={<Foods/>} />
+      <Route path="/admin/orders" element={<Orders/>} />
+      <Route path="/admin/analytics" element={<Analytics />} />  
+          
     </Routes>
 
     

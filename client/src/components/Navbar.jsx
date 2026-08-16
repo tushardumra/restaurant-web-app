@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -20,8 +20,30 @@ const Navbar = () => {
 
   const [showUserMenu, setShowUserMenu] = useState(false);
 
+  const userMenuRef = useRef(null);
+
   const { cartItems } = useContext(CartContext);
   console.log("Cart items in Navbar:", cartItems);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        userMenuRef.current && !userMenuRef.current.contains(event.target)
+      ) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener(
+      "mousedown", handleClickOutside
+    );
+
+    return () => {
+      document.removeEventListener(
+        "mousedown", handleClickOutside
+      );
+    };
+  }, []);
 
   const totalCartCount = cartItems.reduce(
     (total, item) => total + item.quantity,
@@ -173,7 +195,7 @@ const Navbar = () => {
                 Logout
               </button> */}
 
-              <div className="relative">
+              <div ref={userMenuRef} className="relative">
                 <button
                   onClick={() =>
                     setShowUserMenu(!showUserMenu)
@@ -210,6 +232,7 @@ const Navbar = () => {
 
       <Link
         to="/my-orders"
+        onClick={() => setShowUserMenu(false)}
         className="
           block
           px-4
@@ -224,7 +247,10 @@ const Navbar = () => {
       </Link>
 
       <button
-        onClick={handleLogout}
+        onClick={() => {
+          setShowUserMenu(false);
+          handleLogout();
+        }}
         className="
           w-full
           text-left
@@ -296,7 +322,7 @@ const Navbar = () => {
                 Logout
               </button> */}
 
-              <div className="relative mt-1">
+              <div ref={userMenuRef} className="relative mt-1">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
                   className="
@@ -304,7 +330,6 @@ const Navbar = () => {
       items-center
       gap-2
       font-medium
-      cursor-pointer
       px-2.5
     "
                 >
@@ -347,7 +372,10 @@ const Navbar = () => {
                     </Link>
 
                     <button
-                      onClick={handleLogout}
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        handleLogout();
+                      }}
                       // onClick={async () => {
                       //   await fetch("http://localhost:5000/api/auth/logout", {
                       //     method: "POST",

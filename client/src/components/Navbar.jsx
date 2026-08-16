@@ -214,7 +214,10 @@ const Navbar = () => {
           block
           px-4
           py-2
-          hover:bg-gray-100
+          hover:bg-orange-400
+          hover:text-white
+          hover:transition-all
+          duration-300
         "
       >
         My Orders
@@ -227,7 +230,10 @@ const Navbar = () => {
           text-left
           px-4
           py-2
-          hover:bg-gray-100
+          hover:bg-orange-400
+          hover:text-white
+          hover:transition-all
+          duration-300
         "
       >
         Logout
@@ -268,8 +274,9 @@ const Navbar = () => {
           <FaTimes />
         </button>
 
-        <div className="fixed top-17 left-5">
-          <h1 className="text-2xl font-serif font-bold">Welcome to Foodie!</h1>
+        <div className="fixed top-7">
+          
+          <h1 className="text-2xl font-serif font-bold px-2.5">Welcome to Foodie!</h1>
           {/* Login/SignUp Button */}
           {user ? (
             <div className="flex gap-5 items-center">
@@ -298,22 +305,27 @@ const Navbar = () => {
       gap-2
       font-medium
       cursor-pointer
+      px-2.5
     "
                 >
                   <AccountCircleOutlinedIcon/> Hello, {user.username || user.name}
                 </button>
+                
 
                 {showUserMenu && (
                   <div
                     className="
         absolute
-        mt-3
-        w-88
-        bg-white
-        text-black
-        rounded-lg
+        mt-2
+        w-screen
+        bg-[rgba(255, 255, 255, 0.35)]
+        backdrop-blur-[20px]
+        border-[1px, solid, rgba(255, 255, 255, 0.5)]
+        box-shadow-[0 8px 32px rgba(0,0,0,0.15)]
+        text-orange-400
+        font-semibold
+        rounded-sm
         shadow-lg
-        border
         overflow-hidden
         z-50
       "
@@ -324,8 +336,11 @@ const Navbar = () => {
                       className="
           block
           px-4
-          py-3
-          hover:bg-gray-100
+          py-2.5
+          hover:bg-orange-400
+          hover:text-white
+          hover:transition-all
+          duration-300
         "
                     >
                       My Orders
@@ -346,7 +361,10 @@ const Navbar = () => {
           text-left
           px-4
           py-3
-          hover:bg-gray-100
+          hover:bg-orange-400
+          hover:text-white
+          hover:transition-all
+          duration-300
         "
                     >
                       Logout
@@ -357,7 +375,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex gap-5 items-center">
-              <p className="py-1.5">
+              <p className="py-1.5 px-2.5">
                 Please{" "}
                 <Link
                   to="/auth"
@@ -376,10 +394,11 @@ const Navbar = () => {
               </p>
             </div>
           )}
+          
         </div>
 
         {/* Menu content */}
-        <div className="flex flex-col pt-20 items-center justify-center h-full gap-8 text-2xl font-semibold">
+        <div className="flex flex-col items-center justify-center h-full gap-8 text-2xl font-semibold">
           <Link
             to="/"
             className="hover:text-orange-400 transition duration-300"

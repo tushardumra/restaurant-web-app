@@ -14,6 +14,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Foods from "./pages/admin/Foods";
 import Orders from "./pages/admin/Orders";
 import Analytics from "./pages/admin/Analytics";
+import AdminRoute from "./components/AdminRoute";
 
 
 const App = () => {
@@ -34,10 +35,26 @@ const App = () => {
       {/* AUTH ROUTES */}
       <Route path="/auth" element={<Auth/>}/>
 
-      <Route path="/admin" element={<Dashboard/>} />
-      <Route path="/admin/foods" element={<Foods/>} />
-      <Route path="/admin/orders" element={<Orders/>} />
-      <Route path="/admin/analytics" element={<Analytics />} />  
+      <Route path="/admin" element={
+        <AdminRoute>
+          <Dashboard/>
+        </AdminRoute>
+      } />
+      <Route path="/admin/foods" element={
+        <AdminRoute>
+          <Foods/>
+        </AdminRoute>
+      } />
+      <Route path="/admin/orders" element={
+        <AdminRoute>
+          <Orders/>
+        </AdminRoute>
+      } />
+      <Route path="/admin/analytics" element={
+        <AdminRoute>
+          <Analytics />
+        </AdminRoute>
+      } />  
           
     </Routes>
 

@@ -20,28 +20,31 @@ const Navbar = () => {
 
   const [showUserMenu, setShowUserMenu] = useState(false);
 
-  const userMenuRef = useRef(null);
+  const desktopUserMenuRef = useRef(null);
+  const mobileUserMenuRef = useRef(null);
 
   const { cartItems } = useContext(CartContext);
+  console.log(user);
   console.log("Cart items in Navbar:", cartItems);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        userMenuRef.current && !userMenuRef.current.contains(event.target)
-      ) {
+      const clickedInsideDesktop =
+        desktopUserMenuRef.current &&
+        desktopUserMenuRef.current.contains(event.target);
+      const clickedInsideMobile =
+        mobileUserMenuRef.current &&
+        mobileUserMenuRef.current.contains(event.target);
+
+      if (!clickedInsideDesktop && !clickedInsideMobile) {
         setShowUserMenu(false);
       }
     };
 
-    document.addEventListener(
-      "mousedown", handleClickOutside
-    );
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener(
-        "mousedown", handleClickOutside
-      );
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -195,7 +198,7 @@ const Navbar = () => {
                 Logout
               </button> */}
 
-              <div ref={userMenuRef} className="relative">
+              <div ref={desktopUserMenuRef} className="relative">
                 <button
                   onClick={() =>
                     setShowUserMenu(!showUserMenu)
@@ -322,7 +325,7 @@ const Navbar = () => {
                 Logout
               </button> */}
 
-              <div ref={userMenuRef} className="relative mt-1">
+              <div ref={mobileUserMenuRef} className="relative mt-1">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
                   className="

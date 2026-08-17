@@ -97,7 +97,7 @@ const getAllOrders = async (req, res) => {
   try {
     const orders = await orderModel
       .find()
-      .populate("user", "name email")
+      .populate("user", "username email")
       .populate("items.food", "name price");
 
     res.status(200).json({

@@ -26,6 +26,7 @@
     "react-router-dom": "^7.14.1",
     "react-scroll": "^1.9.3",
     "react-slick": "^0.31.0",
+    "recharts": "^3.10.1",
     "remixicon": "^4.9.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^12.1.4",

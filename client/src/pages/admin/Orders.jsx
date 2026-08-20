@@ -122,6 +122,7 @@ console.log("Search:", searchTerm);
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
+          className="border px-3 py-1.5 mb-5 rounded-lg"
         >
           <option value="all">All</option>
           <option value="pending">Pending</option>

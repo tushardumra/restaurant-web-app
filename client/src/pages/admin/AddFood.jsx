@@ -20,6 +20,68 @@ const handleChange = (e) => {
   });
 };
 
+
+
+const uploadImage = async () => {
+  const formData = new FormData();
+
+  formData.append("image", image);
+
+  const response = await axios.post(
+    "http://localhost:5000/api/upload/image",
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+
+  return response.data.imageUrl;
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    let imageUrl = "";
+
+    if (image) {
+      imageUrl = await uploadImage();
+    }
+
+    const foodData = {
+      ...formData,
+      image: imageUrl,
+    };
+
+    const response = await axios.post(
+      "http://localhost:5000/api/food/add",
+      foodData,
+      {
+        withCredentials: true,
+      }
+    );
+
+    console.log(response.data);
+
+    alert("Food Added Successfully");
+
+    setFormData({
+      name: "",
+      category: "",
+      price: "",
+      description: "",
+      stock: "",
+    });
+
+    setImage(null);
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   return (
     <div className="flex">
       <AdminSidebar />
@@ -29,6 +91,7 @@ const handleChange = (e) => {
           Add Food
         </h1>
         <form
+        onSubmit={handleSubmit}
   className="space-y-4 max-w-xl"
 >
   <input

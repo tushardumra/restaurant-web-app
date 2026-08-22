@@ -26,7 +26,8 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
       <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300">
         <div className="h-42 sm:h-40 overflow-hidden">
           <img
-            src={imageUrl || "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"}
+            src={imageUrl }
+            // http://localhost:5173/admin/foods
             alt={name}
             className="w-full h-full object-cover"
           />

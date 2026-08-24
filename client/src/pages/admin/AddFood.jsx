@@ -73,6 +73,7 @@ const handleSubmit = async (e) => {
       price: "",
       description: "",
       stock: "",
+      imageUrl: "",
     });
 
     setImage(null);

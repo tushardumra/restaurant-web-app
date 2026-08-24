@@ -152,7 +152,7 @@ const Menu = () => {
                 category={food.category}
                 description={food.description}
                 price={food.price}
-                imageUrl={food.imageUrl}
+                imageUrl={food.imageUrl || food.image}
                 stock={food.stock}
               />
             ))

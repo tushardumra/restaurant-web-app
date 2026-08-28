@@ -6,7 +6,7 @@ import Auth from "./pages/Auth";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
-import FoodDetails from "./pages/foodDetails";
+import FoodDetails from "./pages/FoodDetails";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import MyOrders from "./pages/MyOrders";

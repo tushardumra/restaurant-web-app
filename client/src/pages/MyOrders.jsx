@@ -89,7 +89,7 @@ const MyOrders = () => {
   }
 
   return (
-    <section className="pt-28 pb-16 px-4">
+    <section className="pt-28 pb-16 px-4 bg-amber-100">
       <div className="max-w-6xl mx-auto">
 
         <h1 className="text-4xl font-bold mb-8">
@@ -102,10 +102,11 @@ const MyOrders = () => {
             <div
               key={order._id}
               className="
-                border
+                
+                bg-yellow-200
                 rounded-2xl
                 p-6
-                shadow-sm
+                shadow-md
               "
             >
               {/* Header */}

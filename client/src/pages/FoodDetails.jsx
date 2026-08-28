@@ -70,9 +70,9 @@ const FoodDetails = () => {
   return (
     <>
     <Navbar/>
-    <section className="pt-28 pb-16 px-4">
-      <div className="max-w-6xl mx-auto bg-amber-50">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-200">
+      <div className="max-w-6xl mx-auto my-12">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Image */}
           <div>
             <img

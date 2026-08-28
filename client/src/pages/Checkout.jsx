@@ -48,9 +48,10 @@ const Checkout = () => {
   // }
 
   return (
-    <section className="pt-28 pb-16 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">
+    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-100">
+      <div className="max-w-5xl mx-auto bg-yellow-200 p-6 rounded-xl shadow-md">
+        <div>
+          <h1 className="text-4xl font-bold mb-8">
           Checkout
         </h1>
 
@@ -87,7 +88,10 @@ const Checkout = () => {
             Total: ${totalAmount}
           </h2>
         </div>
-        <button
+        </div>
+        
+        <div className="flex justify-end">
+          <button
           onClick={handlePlaceOrder}
           className="
             mt-6
@@ -98,10 +102,13 @@ const Checkout = () => {
             rounded-xl
             hover:bg-orange-600
             transition
+            
           "
         >
           Place Order
         </button>
+        </div>
+        
       </div>
     </section>
   );

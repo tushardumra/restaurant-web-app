@@ -28,7 +28,7 @@ const Cart = () => {
   );
 
   return (
-    <section className="pt-28 pb-16 px-4">
+    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-100">
     <div className="max-w-6xl mx-auto">
       <h1 className="text-4xl font-bold mb-10">Shopping Cart</h1>
       <div className="space-y-6">
@@ -36,7 +36,10 @@ const Cart = () => {
           <div
             key={item._id}
             className="
-        border
+        relative    
+        shadow-md
+        
+        bg-yellow-200
         rounded-2xl
         p-4
         flex
@@ -57,7 +60,7 @@ const Cart = () => {
     rounded-xl
   "
             />
-            <div className="flex-1">
+            <div className="flex-1 lg:pr-28">
               <h2 className="text-2xl font-semibold">{item.name}</h2>
 
               <p className="text-gray-500">{item.category}</p>
@@ -96,14 +99,18 @@ const Cart = () => {
             <button
   onClick={() => removeFromCart(item._id)}
   className="
-    mt-4
+    mt-0
     px-4
     py-2
     bg-red-500
     text-white
-    rounded-lg
+    rounded-xl
     hover:bg-red-600
     transition
+    lg:absolute
+    lg:top-4
+    lg:right-4
+    shadow-md
   "
 >
   Remove
@@ -123,6 +130,7 @@ const Cart = () => {
       text-white
       px-6
       py-3
+      shadow-md
       rounded-xl
       hover:bg-orange-600
       transition

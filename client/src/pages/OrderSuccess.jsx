@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const OrderSuccess = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4">
+    <section className="min-h-screen flex items-center justify-center px-4 bg-linear-to-t from-amber-200 to-amber-300">
       <div className="text-center max-w-lg">
 
         <h1 className="text-5xl font-bold text-green-600 mb-4">
-          🎉 Order Placed!
+          🎉Order Placed!
         </h1>
 
         <p className="text-gray-600 mb-8">
@@ -22,6 +22,7 @@ const OrderSuccess = () => {
             px-6
             py-3
             rounded-xl
+            shadow-md
             hover:bg-orange-600
           "
         >

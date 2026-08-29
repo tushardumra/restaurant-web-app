@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -89,8 +91,10 @@ const MyOrders = () => {
   }
 
   return (
-    <section className="pt-28 pb-16 px-4 bg-amber-100">
-      <div className="max-w-6xl mx-auto">
+    <>
+    <Navbar/>
+    <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
+      <div className="max-w-6xl mx-auto md:my-12">
 
         <h1 className="text-4xl font-bold mb-8">
           My Orders
@@ -118,7 +122,7 @@ const MyOrders = () => {
                   </h2>
 
                   <p className="text-gray-500 break-all text-sm">
-                    {order._id}
+                    {order._id.slice(0,8).toUpperCase()}
                   </p>
                 </div>
 
@@ -211,6 +215,8 @@ const MyOrders = () => {
         </div>
       </div>
     </section>
+    <Footer/>
+    </>
   );
 };
 

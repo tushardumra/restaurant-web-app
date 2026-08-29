@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Cart = () => {
   const { 
@@ -12,7 +13,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <section className="min-h-screen pt-28 px-4">
+      <section className="min-h-screen pt-28 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
         <div className="text-center">
           <h2 className="text-2xl font-bold">Your Cart is Empty</h2>
 
@@ -28,8 +29,10 @@ const Cart = () => {
   );
 
   return (
-    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-100">
-    <div className="max-w-6xl mx-auto">
+    <>
+    <Navbar/>
+    <section className="min-h-screen pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
+    <div className="max-w-6xl mx-auto md:my-12">
       <h1 className="text-4xl font-bold mb-10">Shopping Cart</h1>
       <div className="space-y-6">
         {cartItems.map((item) => (
@@ -65,7 +68,7 @@ const Cart = () => {
 
               <p className="text-gray-500">{item.category}</p>
 
-              <p className="text-orange-500 font-bold mt-2">${item.price}</p>
+              <p className="text-orange-500 font-bold mt-2">₹{item.price}</p>
 
               <div className="flex items-center gap-3 mt-3">
                 <button
@@ -73,6 +76,7 @@ const Cart = () => {
                   className="
       w-8
       h-8
+      font-semibold
       rounded-full
       bg-gray-200
       hover:bg-gray-300
@@ -85,6 +89,7 @@ const Cart = () => {
       w-8
       h-8
       rounded-full
+      font-semibold
       bg-orange-500
       text-white
       hover:bg-orange-600
@@ -93,13 +98,13 @@ const Cart = () => {
               </div>
 
               <p className="font-semibold mt-2">
-                Subtotal: ${item.price * item.quantity}
+                Subtotal: ₹{item.price * item.quantity}
               </p>
             </div>
             <button
   onClick={() => removeFromCart(item._id)}
   className="
-    mt-0
+    mt-0  
     px-4
     py-2
     bg-red-500
@@ -107,9 +112,9 @@ const Cart = () => {
     rounded-xl
     hover:bg-red-600
     transition
-    lg:absolute
-    lg:top-4
-    lg:right-4
+    md:absolute
+    md:top-4
+    md:right-4
     shadow-md
   "
 >
@@ -119,7 +124,7 @@ const Cart = () => {
         ))}
       </div>
       <div className="mt-10 text-right">
-        <h2 className="text-3xl font-bold">Total: ${totalAmount}</h2>
+        <h2 className="text-3xl font-bold">Total: ₹{totalAmount}</h2>
       </div>
       <div className="mt-6 text-right">
   <Link
@@ -130,6 +135,9 @@ const Cart = () => {
       text-white
       px-6
       py-3
+      w-full
+      md:w-auto
+      text-center
       shadow-md
       rounded-xl
       hover:bg-orange-600
@@ -141,6 +149,7 @@ const Cart = () => {
 </div>
     </div>
   </section>
+  </>
   )
 
 

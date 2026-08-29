@@ -85,8 +85,8 @@ const Menu = () => {
 
   return (
     <>
-    <section className="min-h-screen bg-linear-to-t from-amber-200 to-amber-300 py-24 px-4 md:px-8">
-      <div className=" max-w-7xl mx-auto sm:my-8 md:my-12 lg:my-14 xl:my-18 text-white">
+    <section className="min-h-screen bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 py-24 px-4 md:px-8">
+      <div className=" max-w-7xl mx-auto sm:my-8 md:my-12 lg:my-14 xl:my-18 text-slate-800">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Our Menu</h1>
         <p className="mb-5">
           Explore our delicious dishes and beverages.
@@ -100,7 +100,7 @@ const Menu = () => {
             placeholder="Search for food..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full text-white border-2 border-white rounded-xl p-2 md:p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+            className="w-full text-white border-2 border-amber-100 rounded-xl p-2 md:p-3 outline-none focus:border-none focus:ring-2 focus:ring-orange-500 transition duration-300"
           />
         </div>
 

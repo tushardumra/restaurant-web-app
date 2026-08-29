@@ -3,6 +3,8 @@ import { CartContext } from "../context/CartContext";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 const Checkout = () => {
@@ -48,12 +50,14 @@ const Checkout = () => {
   // }
 
   return (
-    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-100">
-      <div className="max-w-5xl mx-auto bg-yellow-200 p-6 rounded-xl shadow-md">
+    <>
+    <Navbar/>
+    <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
+      <div className="max-w-5xl mx-auto md:my-12 bg-yellow-200 p-6 rounded-xl shadow-md">
         <div>
-          <h1 className="text-4xl font-bold mb-8">
+          <h1 className="text-3xl font-bold mb-8">
           Checkout
-        </h1>
+          </h1>
 
         <div className="space-y-4">
           {cartItems.map((item) => (
@@ -77,15 +81,15 @@ const Checkout = () => {
               </div>
 
               <p className="font-bold">
-                ${item.price * item.quantity}
+                ₹{item.price * item.quantity}
               </p>
             </div>
           ))}
         </div>
 
         <div className="mt-8 text-right">
-          <h2 className="text-3xl font-bold">
-            Total: ${totalAmount}
+          <h2 className="text-2xl font-bold">
+            Total: ₹{totalAmount}
           </h2>
         </div>
         </div>
@@ -97,6 +101,8 @@ const Checkout = () => {
             mt-6
             bg-orange-500
             text-white
+            w-full
+            md:w-auto
             px-6
             py-3
             rounded-xl
@@ -111,6 +117,8 @@ const Checkout = () => {
         
       </div>
     </section>
+    <Footer/>
+    </>
   );
 };
 

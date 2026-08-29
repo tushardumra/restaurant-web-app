@@ -95,7 +95,7 @@ const Navbar = () => {
         scrolled ? "bg-black/70 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto py-4 px-4 md:px-8 xl:px-0 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto py-4 px-4 md:px-8 xl:px-0 flex items-center justify-between text-black">
         {/* Logo */}
         <div className="text-2xl text-white font-bold">Foodie</div>
 
@@ -224,10 +224,11 @@ const Navbar = () => {
                     right-0
                     mt-3
                     w-38
-                    bg-white
+                    bg-amber-100
+                    text-gray-800
                     rounded-lg
                     shadow-lg
-                    border
+                
                     overflow-hidden
                     z-50
                   "
@@ -240,7 +241,7 @@ const Navbar = () => {
           block
           px-4
           py-2
-          hover:bg-orange-400
+          hover:bg-amber-500
           hover:text-white
           hover:transition-all
           duration-300
@@ -259,7 +260,7 @@ const Navbar = () => {
           text-left
           px-4
           py-2
-          hover:bg-orange-400
+          hover:bg-amber-500
           hover:text-white
           hover:transition-all
           duration-300

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const FoodDetails = () => {
   const { id } = useParams();
@@ -70,9 +71,9 @@ const FoodDetails = () => {
   return (
     <>
     <Navbar/>
-    <section className="min-h-screen pt-28 pb-16 px-4 bg-amber-200">
-      <div className="max-w-6xl mx-auto my-12">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+    <section className="min-h-screen pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
+      <div className="max-w-6xl mx-auto md:my-12">
+        <div className="grid lg:grid-cols-2 gap-5 md:gap-10 lg:gap-20 items-center">
           {/* Image */}
           <div>
             <img
@@ -80,7 +81,8 @@ const FoodDetails = () => {
               alt={food.name}
               className="
       w-full
-      h-112.5
+      h-85
+      md:h-112.5
       object-cover
       rounded-2xl
       shadow-lg
@@ -90,11 +92,11 @@ const FoodDetails = () => {
 
           {/* Content */}
           <div>
-            <h1 className="text-4xl font-bold mb-4">{food.name}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4">{food.name}</h1>
             <p className="text-orange-500 font-semibold mb-3">
               {food.category}
             </p>
-            <p className="text-3xl font-bold mb-6">${food.price}</p>
+            <p className="text-3xl font-bold mb-3 md:mb-6">₹{food.price}</p>
             <h2 className="text-xl font-semibold mb-2">Description</h2>
 
             <p className="text-gray-600 leading-relaxed">{food.description}</p>
@@ -113,6 +115,8 @@ const FoodDetails = () => {
     mt-8
     bg-orange-500
     text-white
+    w-full
+    md:w-auto
     px-8
     py-3
     rounded-xl
@@ -120,12 +124,13 @@ const FoodDetails = () => {
     transition
   "
             >
-              Add To Cart
+              Buy Now
             </button>
           </div>
         </div>
       </div>
     </section>
+    <Footer/>
     </>
   );
 };

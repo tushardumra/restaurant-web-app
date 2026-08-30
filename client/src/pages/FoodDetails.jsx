@@ -62,6 +62,7 @@ const FoodDetails = () => {
   console.log("Adding to cart");
 
     addToCart(food);
+    navigate("/cart", { replace: true });
   }
 
   if (loading || !food) {

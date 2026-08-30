@@ -5,7 +5,7 @@ const OrderSuccess = () => {
     <section className="min-h-screen flex items-center justify-center px-4 bg-linear-to-t from-amber-200 to-amber-300">
       <div className="text-center max-w-lg">
 
-        <h1 className="text-4 xl md:text-5xl font-bold text-green-600 mb-4">
+        <h1 className="text-mbl-hdng md:text-tbl-hdng lg:text-lpt-hdng font-bold text-green-600 mb-4">
           🎉Order Placed!
         </h1>
 

@@ -33,7 +33,7 @@ const Cart = () => {
     <Navbar/>
     <section className="min-h-screen pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
     <div className="max-w-6xl mx-auto md:my-12">
-      <h1 className="text-4xl font-bold mb-10">Shopping Cart</h1>
+      <h1 className="text-mbl-hdng md:text-tbl-hdng lg:text-lpt-hdng font-bold mb-4 md:mb-5 lg:mb-6">Shopping Cart</h1>
       <div className="space-y-6">
         {cartItems.map((item) => (
           <div
@@ -126,7 +126,29 @@ const Cart = () => {
       <div className="mt-10 text-right">
         <h2 className="text-3xl font-bold">Total: ₹{totalAmount}</h2>
       </div>
-      <div className="mt-6 text-right">
+      <div className="flex justify-between mt-6">
+        <Link
+    to="/menu"
+    className="
+      inline-block
+      bg-amber-50
+      text-orange-500
+      px-6
+      py-3
+      w-full
+      md:w-auto
+      text-center
+      shadow-md
+      rounded-xl
+      hover:bg-orange-500
+      hover:text-white
+      transition-all
+      duration-300
+    "
+  >
+    Order More
+  </Link>
+
   <Link
     to="/checkout"
     className="

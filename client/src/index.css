@@ -18,4 +18,13 @@ body {
 @theme {
   --color-brand-orange: #ff5f00;
   --color-brand-bgWhite: #f1f1f1;
+  /* Heading sizes for different screens */
+  --text-mbl-hdng: 1.875rem;
+  --text-tbl-hdng: 2.25rem;
+  --text-lpt-hdng: 2.50rem;
+
+  /* Margin-Bottoms for different screens */
+  --mb-mbl-hdng: 1rem;
+  --mb-tbl-hdng: 1.25rem;
+  --mb-lpt-hdng: 1.5rem;
 }

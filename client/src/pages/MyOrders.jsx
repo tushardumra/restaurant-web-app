@@ -96,7 +96,7 @@ const MyOrders = () => {
     <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
       <div className="max-w-6xl mx-auto md:my-12">
 
-        <h1 className="text-4xl font-bold mb-8">
+        <h1 className="text-mbl-hdng md:text-tbl-hdng lg:text-lpt-hdng font-bold mb-4 md:mb-5 lg:mb-6">
           My Orders
         </h1>
 
@@ -114,7 +114,7 @@ const MyOrders = () => {
               "
             >
               {/* Header */}
-              <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+              <div className="flex justify-between">
 
                 <div>
                   <h2 className="font-bold text-lg">
@@ -125,20 +125,30 @@ const MyOrders = () => {
                     {order._id.slice(0,8).toUpperCase()}
                   </p>
                 </div>
-
+                <div>
                 <span
                   className={`
-                    px-4
+                    inline-flex
+                    items-center
+                    justify-center
+                    whitespace-nowrap
+                    px-3
                     py-2
                     rounded-full
-                    text-sm
-                    font-medium
-                    w-fit
+                    text-xs
+                    font-semibold
+                    border
+                    border-current/10
+                    tracking-wide
+                    
+                    uppercase
+                    
                     ${getStatusStyles(order.status)}
                   `}
                 >
                   {order.status}
                 </span>
+                </div>
 
               </div>
 

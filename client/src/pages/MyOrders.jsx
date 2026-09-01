@@ -78,7 +78,7 @@ const MyOrders = () => {
 
   if (orders.length === 0) {
     return (
-      <section className="pt-28 text-center">
+      <section className="text-center min-h-screen pt-28 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
         <h2 className="text-2xl font-bold">
           No Orders Yet
         </h2>

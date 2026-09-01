@@ -23,7 +23,7 @@ const FoodCard = ({ _id, name, description, price, imageUrl, category, stock }) 
   return (
     <div>
       <Link to={`/food/${_id}`}>
-      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300">
+      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:translate-y-2 transition-all duration-300 border border-current/10">
         <div className="h-42 sm:h-40 overflow-hidden">
           <img
             src={imageUrl }

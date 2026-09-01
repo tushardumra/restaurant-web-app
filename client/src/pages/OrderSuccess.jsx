@@ -9,7 +9,7 @@ const OrderSuccess = () => {
           🎉Order Placed!
         </h1>
 
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-800 mb-8">
           Thank you for your order.
           Our team has received it and will start preparing it shortly.
         </p>
@@ -22,6 +22,8 @@ const OrderSuccess = () => {
             px-6
             py-3
             rounded-xl
+            border
+            border-current/15
             shadow-md
             hover:bg-orange-600
           "

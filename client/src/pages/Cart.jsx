@@ -41,7 +41,8 @@ const Cart = () => {
             className="
         relative    
         shadow-md
-        
+        border
+        border-current/15
         bg-yellow-200
         rounded-2xl
         p-4
@@ -126,19 +127,23 @@ const Cart = () => {
       <div className="mt-10 text-right">
         <h2 className="text-3xl font-bold">Total: ₹{totalAmount}</h2>
       </div>
-      <div className="flex justify-between mt-6">
+      <div className="flex flex-col gap-3 md:flex-row md:justify-between mt-6">
         <Link
     to="/menu"
     className="
       inline-block
+      order-2
+      md:order-1
       bg-amber-50
       text-orange-500
-      px-6
+      px-4
       py-3
       w-full
       md:w-auto
       text-center
       shadow-md
+      border
+      border-current/15
       rounded-xl
       hover:bg-orange-500
       hover:text-white
@@ -153,14 +158,18 @@ const Cart = () => {
     to="/checkout"
     className="
       inline-block
+      order-1
+      md:order-2
       bg-orange-500
       text-white
-      px-6
+      px-4
       py-3
       w-full
       md:w-auto
       text-center
       shadow-md
+      border
+      border-current/15
       rounded-xl
       hover:bg-orange-600
       transition

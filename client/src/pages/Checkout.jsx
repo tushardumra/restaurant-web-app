@@ -53,7 +53,7 @@ const Checkout = () => {
     <>
     <Navbar/>
     <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
-      <div className="max-w-5xl mx-auto md:my-12 bg-yellow-200 p-6 rounded-xl shadow-md">
+      <div className="max-w-5xl mx-auto md:my-12 bg-yellow-200 p-4 rounded-xl shadow-md border border-current/15">
         <div>
           <h1 className="text-3xl font-bold mb-8">
           Checkout
@@ -105,6 +105,8 @@ const Checkout = () => {
             md:w-auto
             px-6
             py-3
+            border
+            border-current/15
             rounded-xl
             hover:bg-orange-600
             transition

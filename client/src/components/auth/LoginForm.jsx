@@ -1,7 +1,7 @@
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginForm = ({ setIsLogin }) => {
   const { setUser } = useAuth();
@@ -18,6 +18,9 @@ const LoginForm = ({ setIsLogin }) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const redirectTo = location.state?.from || "/";
 
   const handleChange = (e) => {
     setFormData({
@@ -69,11 +72,10 @@ const LoginForm = ({ setIsLogin }) => {
         return;
       }
 
-      // SUCCESS
+      // AFTER SUCCESSFUL LOGIN
       console.log(data);
       setUser(data.user);
-
-      navigate("/");
+      navigate(redirectTo, { replace: true });
 
       // Clearing form input fields
       setFormData({

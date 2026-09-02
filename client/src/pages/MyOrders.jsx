@@ -21,6 +21,7 @@ const MyOrders = () => {
       );
 
       setOrders(response.data.orders);
+      console.log(response.data.orders)
     } catch (error) {
       console.log("Error fetching orders:", error);
     } finally {
@@ -68,7 +69,7 @@ const MyOrders = () => {
 
   if (loading) {
     return (
-      <section className="pt-28 text-center">
+      <section className="min-h-screen pt-28 text-center bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
         <h2 className="text-xl font-semibold">
           Loading Orders...
         </h2>
@@ -170,17 +171,27 @@ const MyOrders = () => {
                         pb-2
                       "
                     >
-                      <span>
-                        {item.food?.name}
-                      </span>
-
-                      <span>
-                        Qty: {item.quantity}
-                      </span>
+                      <div className="flex items-center gap-4 w-1/2 justify-between">
+                        <p>
+                          {item.food?.name}
+                        </p>
+                        
+                        
+                      </div>
+                      <div className="flex justify-between w-1/2">
+                      <p className="text-gray-500">
+                          Qty: {item.quantity}
+                        </p>
+                      <p className="font-semibold">
+                          ₹{item.food?.price * item.quantity}
+                      </p>
+                      </div>
+                      
                     </div>
                   ))}
 
                 </div>
+
               </div>
 
               {/* Footer */}
@@ -188,7 +199,7 @@ const MyOrders = () => {
 
                 <div>
                   <p className="font-bold text-xl">
-                    Total: ${order.totalAmount}
+                    Total: ₹{order.totalAmount}
                   </p>
 
                   <p className="text-gray-500 text-sm mt-1">

@@ -2,6 +2,7 @@ import heroimg from "../assets/heroimg.avif";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   useEffect(() => {
@@ -11,6 +12,12 @@ const Hero = () => {
       once: false,
     });
   }, []);
+
+  const navigate = useNavigate();
+
+  const orderNow = () => {
+    navigate("/menu");
+  }
 
   return (
     <div
@@ -40,7 +47,7 @@ const Hero = () => {
           expedita inventore?
         </p>
 
-        <button data-aos="slide-up" data-aos-delay="300" className="bg-brand-orange px-7 py-3 font-semibold capitalize rounded-lg mt-5 cursor-pointer hover:bg-white hover:text-brand-orange">Order Now</button>
+        <button onClick={orderNow} data-aos="slide-up" data-aos-delay="300" className="bg-brand-orange px-7 py-3 font-semibold capitalize rounded-lg mt-5 cursor-pointer hover:bg-white hover:text-brand-orange">Order Now</button>
       </div>
     </div>
   );

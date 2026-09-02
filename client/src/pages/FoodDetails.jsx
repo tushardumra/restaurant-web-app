@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
@@ -15,6 +15,7 @@ const FoodDetails = () => {
   const { user } = useAuth();
   console.log("User from AuthContext:", user);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     fetchFood();
@@ -55,7 +56,11 @@ const FoodDetails = () => {
 
   if (!user) {
     console.log("Redirecting to auth");
-    navigate("/auth");
+    navigate("/auth", {
+      state: {
+        from: location,
+      },
+    });
     return;
   }
 
@@ -66,7 +71,7 @@ const FoodDetails = () => {
   }
 
   if (loading || !food) {
-    return <div className="pt-28 text-center">Loading...</div>;
+    return <div className="min-h-screen pt-28 text-center bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">Loading...</div>;
   }
 
   return (

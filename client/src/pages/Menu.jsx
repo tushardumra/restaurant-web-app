@@ -50,7 +50,7 @@ const Menu = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-900 flex items-center justify-center">
         <p className="text-gray-600 text-lg">Loading food items...</p>
       </div>
     );

@@ -241,7 +241,7 @@ const Navbar = () => {
           block
           px-4
           py-2
-          hover:bg-amber-500
+          hover:bg-orange-400
           hover:text-white
           hover:transition-all
           duration-300
@@ -260,7 +260,7 @@ const Navbar = () => {
           text-left
           px-4
           py-2
-          hover:bg-amber-500
+          hover:bg-orange-400
           hover:text-white
           hover:transition-all
           duration-300

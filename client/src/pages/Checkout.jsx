@@ -53,7 +53,7 @@ const Checkout = () => {
     <>
     <Navbar/>
     <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
-      <div className="max-w-5xl mx-auto md:my-12 bg-yellow-200 p-4 rounded-xl shadow-md border border-current/15">
+      <div className="max-w-5xl mx-auto md:my-12 bg-yellow-200 p-5 rounded-xl shadow-md border border-current/15">
         <div>
           <h1 className="text-3xl font-bold mb-8">
           Checkout
@@ -75,14 +75,16 @@ const Checkout = () => {
                   {item.name}
                 </h3>
 
-                <p className="text-gray-500">
+                
+              </div>
+              <div className="flex justify-between w-1/2">
+              <p className="text-gray-500">
                   Qty: {item.quantity}
                 </p>
-              </div>
-
-              <p className="font-bold">
+              <p className="font-semibold">
                 ₹{item.price * item.quantity}
               </p>
+              </div>
             </div>
           ))}
         </div>

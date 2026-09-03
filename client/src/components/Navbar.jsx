@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -80,6 +80,7 @@ const Navbar = () => {
     return null;
   }
 
+  const navigate = useNavigate();
   const handleLogout = async () => {
     await fetch("http://localhost:5000/api/auth/logout", {
                           method: "POST",
@@ -87,6 +88,7 @@ const Navbar = () => {
                         });
 
                         setUser(null);
+                        navigate("/");
   }
 
   return (

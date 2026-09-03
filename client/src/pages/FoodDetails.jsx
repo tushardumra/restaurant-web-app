@@ -77,7 +77,7 @@ const FoodDetails = () => {
   return (
     <>
     <Navbar/>
-    <section className="min-h-screen pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
+    <section className="pt-28 pb-16 px-4 bg-linear-to-t from-amber-100 via-amber-200 to-amber-300 text-slate-800">
       <div className="max-w-6xl mx-auto md:my-12">
         <div className="grid lg:grid-cols-2 gap-5 md:gap-10 lg:gap-20 items-center">
           {/* Image */}

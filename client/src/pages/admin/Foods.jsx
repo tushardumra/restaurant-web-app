@@ -25,6 +25,28 @@ const Foods = () => {
     }
   };
 
+  const deleteFood = async (foodId) => {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this food item?"
+  );
+
+  if (!confirmed) return;
+
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/food/delete/${foodId}`,
+      {
+        withCredentials: true,
+      }
+    );
+
+    fetchFoods();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   if (loading) {
     return (
       <div className="flex">
@@ -88,7 +110,7 @@ const Foods = () => {
         </p>
 
         <p className="mt-2 font-semibold">
-          ${food.price}
+          ₹{food.price}
         </p>
 
         <p className="text-sm text-gray-600 mt-1">
@@ -98,6 +120,9 @@ const Foods = () => {
         <div className="flex gap-2 mt-4">
 
           <button
+            onClick={() => 
+              navigate(`/admin/foods/edit/${food._id}`)
+            }
             className="
               bg-blue-500
               text-white
@@ -110,6 +135,7 @@ const Foods = () => {
           </button>
 
           <button
+            onClick={() => deleteFood(food._id)}
             className="
               bg-red-500
               text-white

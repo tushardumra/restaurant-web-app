@@ -16,6 +16,7 @@ import Orders from "./pages/admin/Orders";
 import Analytics from "./pages/admin/Analytics";
 import AdminRoute from "./components/AdminRoute";
 import AddFood from "./pages/admin/AddFood";
+import EditFood from "./pages/admin/EditFood";
 
 const App = () => {
   return (
@@ -72,6 +73,14 @@ const App = () => {
         element={
           <AdminRoute>
             <AddFood />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/foods/edit/:id"
+        element={
+          <AdminRoute>
+            <EditFood />
           </AdminRoute>
         }
       />

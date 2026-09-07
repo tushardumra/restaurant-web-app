@@ -101,17 +101,20 @@ console.log("Search:", searchTerm);
     <div className="flex">
       <AdminSidebar />
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 bg-amber-50">
         <h1 className="text-4xl font-bold mb-8">Order Management</h1>
 
+        <div className="flex gap-3">
         <input
           type="text"
           placeholder="Search customer..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="
+            flex-7
             border
-            rounded-lg
+            border-zinc-400
+            rounded-xl
             px-4
             py-2
             mb-6
@@ -122,9 +125,10 @@ console.log("Search:", searchTerm);
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="border px-3 py-1.5 mb-5 rounded-lg"
+          className="flex-1 text-zinc-500 border px-3 py-2 mb-6 rounded-xl appearance-none"
         >
-          <option value="all">All</option>
+          <option value="all">
+             All</option>
           <option value="pending">Pending</option>
           <option value="accepted">Accepted</option>
           <option value="preparing">Preparing</option>
@@ -132,12 +136,14 @@ console.log("Search:", searchTerm);
           <option value="cancelled">Cancelled</option>
         </select>
 
+        </div>
+
         <div className="space-y-6">
           {filteredOrders.map((order) => (
             <div
               key={order._id}
               className="
-              bg-amber-100
+              bg-amber-200
               rounded-xl
               shadow-md
               p-6

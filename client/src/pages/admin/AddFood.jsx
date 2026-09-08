@@ -83,7 +83,7 @@ const AddFood = () => {
       console.log(error);
     }
   };
-
+  
   return (
     <div className="min-h-screen bg-amber-100">
       <AdminSidebar />

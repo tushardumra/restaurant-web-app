@@ -56,10 +56,11 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex">
+      <div className="min-h-screen bg-amber-100">
         <AdminSidebar />
-
-        <div className="flex-1 p-8">Loading Dashboard...</div>
+        <main className="ml-64 flex min-h-screen items-center justify-center p-8">
+          <p className="text-xl font-semibold text-zinc-700">Loading...</p>
+        </main>
       </div>
     );
   }

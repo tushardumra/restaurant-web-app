@@ -51,7 +51,9 @@ const Foods = () => {
     return (
       <div className="min-h-screen bg-amber-100">
         <AdminSidebar />
-        <div className="ml-64 min-h-screen p-8 text-zinc-900">Loading Foods...</div>
+        <main className="ml-64 flex min-h-screen items-center justify-center p-8">
+          <p className="text-xl font-semibold text-zinc-700">Loading...</p>
+        </main>
       </div>
     );
   }

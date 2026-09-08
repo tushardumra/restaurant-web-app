@@ -4,8 +4,13 @@ const AdminSidebar = () => {
   return (
     <div
       className="
+        fixed
+        inset-y-0
+        left-0
+        z-50
         w-64
-        min-h-screen
+        h-screen
+        overflow-y-auto
         bg-zinc-900
         text-white
         p-6

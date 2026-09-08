@@ -49,18 +49,18 @@ const Foods = () => {
 
   if (loading) {
     return (
-      <div className="flex">
+      <div className="min-h-screen bg-amber-100">
         <AdminSidebar />
-        <div className="flex-1 p-8">Loading Foods...</div>
+        <div className="ml-64 min-h-screen p-8 text-zinc-900">Loading Foods...</div>
       </div>
     );
   }
 
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-amber-100">
       <AdminSidebar />
 
-      <div className="flex-1 p-8 bg-amber-100 text-zinc-900">
+      <div className="ml-64 min-h-screen p-8 text-zinc-900">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">Food Management</h1>
 

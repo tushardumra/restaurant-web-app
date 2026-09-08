@@ -98,10 +98,10 @@ const Orders = () => {
   console.log("Search:", searchTerm);
 
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-amber-100">
       <AdminSidebar />
 
-      <div className="flex-1 p-8 bg-amber-100 text-zinc-900">
+      <main className="ml-64 min-h-screen p-8 text-zinc-900">
         <h1 className="text-4xl  font-bold mb-8">Order Management</h1>
 
         <div className="flex gap-3">
@@ -261,7 +261,7 @@ const Orders = () => {
             </div>
           ))}
         </div>
-      </div>
+      </main>
     </div>
   );
 };

@@ -85,12 +85,12 @@ const AddFood = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-amber-100">
       <AdminSidebar />
 
-      <div className="flex-1 p-8">
-        <h1 className="text-4xl font-bold mb-8">Add Food</h1>
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
+      <div className="ml-64 min-h-screen p-8 text-zinc-900">
+        <h1 className="mx-auto text-4xl w-full max-w-3xl font-bold mb-8">Add Food</h1>
+        <form onSubmit={handleSubmit} className="mx-auto grid w-full grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl">
           <input
             type="text"
             name="name"
@@ -118,19 +118,19 @@ const AddFood = () => {
             className="w-full border p-3 rounded-lg"
           />
 
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
-
           <input
             type="number"
             name="stock"
             placeholder="Stock"
             value={formData.stock}
+            onChange={handleChange}
+            className="w-full border p-3 rounded-lg"
+          />
+
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
             onChange={handleChange}
             className="w-full border p-3 rounded-lg"
           />
@@ -183,11 +183,7 @@ const AddFood = () => {
           <button
             type="submit"
             className="
-      bg-orange-500
-      text-white
-      px-6
-      py-3
-      rounded-lg
+      md:col-span-2 bg-orange-500 hover:bg-orange-600 transition-all duration-300 cursor-pointer font-semibold text-white px-6 py-3 rounded-xl shadow-md
     "
           >
             Add Food

@@ -115,13 +115,13 @@ const EditFood = () => {
     );
   }
   return (
-    <div className="flex">
+    <div className="min-h-screen bg-amber-100">
       <AdminSidebar />
 
-      <div className="flex-1 p-8">
-        <h1 className="text-4xl font-bold mb-8">Edit Food</h1>
+      <div className="ml-64 min-h-screen p-8 text-zinc-900">
+        <h1 className="mx-auto w-full max-w-3xl text-4xl font-bold mb-8">Edit Food</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
+        <form onSubmit={handleSubmit} className="mx-auto grid w-full grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl">
           <input
             type="text"
             name="name"
@@ -149,14 +149,7 @@ const EditFood = () => {
             className="w-full border p-3 rounded-lg"
           />
 
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
-          />
-
+          
           <input
             type="number"
             name="stock"
@@ -166,7 +159,16 @@ const EditFood = () => {
             className="w-full border p-3 rounded-lg"
           />
 
-          <div className="flex w-full justify-between gap-5">
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={handleChange}
+            className="md:col-span-2 w-full border p-3 rounded-lg"
+          />
+
+
+          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex-1">
               <p className="mb-2.5 text-sm font-medium text-heading">
                 Change image
@@ -233,11 +235,7 @@ const EditFood = () => {
           <button
             type="submit"
             className="
-              bg-orange-500
-              text-white
-              px-6
-              py-3
-              rounded-lg
+              md:col-span-2 bg-orange-500 hover:bg-orange-600 transition-all duration-300 cursor-pointer font-semibold text-white px-6 py-3 rounded-xl shadow-md
             "
           >
             Update Food

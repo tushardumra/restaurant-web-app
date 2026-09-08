@@ -60,18 +60,24 @@ const Foods = () => {
     <div className="flex">
       <AdminSidebar />
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 bg-amber-100 text-zinc-900">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">Food Management</h1>
 
           <button
             onClick={() => navigate("/admin/foods/add")}
             className="
-              bg-orange-500
-              text-white
+              bg-white
+              text-orange-500
               px-5
-              py-3
-              rounded-lg
+              py-2
+              rounded-xl
+              border
+              border-orange-500
+              hover:bg-orange-600
+              hover:text-white
+              transition-all
+              duration-300
             "
           >
             + Add Food
@@ -87,6 +93,8 @@ const Foods = () => {
         rounded-2xl
         shadow-md
         overflow-hidden
+        border
+        border-current/10
       "
     >
       <img
@@ -124,11 +132,16 @@ const Foods = () => {
               navigate(`/admin/foods/edit/${food._id}`)
             }
             className="
-              bg-blue-500
+              bg-yellow-600
               text-white
               px-4
               py-2
-              rounded-lg
+              rounded-xl
+              border
+              border-current/15
+              hover:bg-yellow-700
+              transition-all
+              duration-300
             "
           >
             Edit
@@ -140,8 +153,13 @@ const Foods = () => {
               bg-red-500
               text-white
               px-4
-              py-2
-              rounded-lg
+              py-1
+              rounded-xl
+              border
+              border-current/15
+              hover:bg-red-600
+              transition-all
+              duration-300
             "
           >
             Delete

@@ -68,7 +68,7 @@ const Dashboard = () => {
     <div className="flex">
       <AdminSidebar />
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 bg-brand-bgWhite">
         <h1 className="text-4xl font-bold mb-8">Dashboard</h1>
 
         <div className="grid md:grid-cols-3 gap-6">

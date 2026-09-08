@@ -75,8 +75,8 @@ const Orders = () => {
 
   const filteredOrders = orders.filter((order) => {
     const matchesSearch = (order.user?.username ?? "")
-  .toLowerCase()
-  .includes(searchTerm.toLowerCase());
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
 
     const matchesStatus =
       filterStatus === "all" ? true : order.status === filterStatus;
@@ -95,47 +95,45 @@ const Orders = () => {
 
   console.log(orders[0]);
   console.log("Filtered Orders:", filteredOrders);
-console.log("Search:", searchTerm);
+  console.log("Search:", searchTerm);
 
   return (
     <div className="flex">
       <AdminSidebar />
 
-      <div className="flex-1 p-8 bg-amber-50">
-        <h1 className="text-4xl font-bold mb-8">Order Management</h1>
+      <div className="flex-1 p-8 bg-amber-100 text-zinc-900">
+        <h1 className="text-4xl  font-bold mb-8">Order Management</h1>
 
         <div className="flex gap-3">
-        <input
-          type="text"
-          placeholder="Search customer..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="
+          <input
+            type="text"
+            placeholder="Search customer..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="
             flex-7
-            border
-            border-zinc-400
+            border-2
+            border-zinc-700
             rounded-xl
             px-4
             py-2
             mb-6
             w-full
           "
-        />
+          />
 
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className="flex-1 text-zinc-500 border px-3 py-2 mb-6 rounded-xl appearance-none"
-        >
-          <option value="all">
-             All</option>
-          <option value="pending">Pending</option>
-          <option value="accepted">Accepted</option>
-          <option value="preparing">Preparing</option>
-          <option value="completed">Completed</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="flex-1 text-zinc-700 border-2 px-3 py-2 mb-6 rounded-xl appearance-none"
+          >
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="accepted">Accepted</option>
+            <option value="preparing">Preparing</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
         </div>
 
         <div className="space-y-6">
@@ -143,46 +141,66 @@ console.log("Search:", searchTerm);
             <div
               key={order._id}
               className="
+              flex gap-10
+              text-zinc-900
               bg-amber-200
               rounded-xl
               shadow-md
               p-6
             "
             >
-              <h2 className="font-bold text-lg">{order.user?.username}</h2>
+              <div className="flex-9 flex-col justify-between">
+                {/* name and email */}
+                <div>
+                  <h2 className="font-bold text-lg">{order.user?.username}</h2>
 
-              <p className="text-gray-500">{order.user?.email}</p>
+                  <p className="text-gray-600">{order.user?.email}</p>
+                </div>
 
-              <div className="mt-4">
-                {order.items.map((item) => (
-                  <div key={item._id} className="flex justify-between">
-                    <span>{item.food?.name}</span>
+                <div className="">
+                  {/* food items */}
+                  <div className="mt-4">
+                    {order.items.map((item) => (
+                      <div
+                        key={item._id}
+                        className="flex justify-between border-b pt-2 pb-1"
+                      >
+                        <div className="flex items-center gap-4 justify-between">
+                          <p>{item.food?.name}</p>
+                        </div>
+                        {/* <span></span> */}
 
-                    <span>Qty: {item.quantity}</span>
+                        <p>Qty: {item.quantity}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <div className="mt-4">
-                <strong>Total:</strong> ${order.totalAmount}
-              </div>
-
-              <div className="mt-2">
-                <span
-                  className={`
+                {/* total and order status */}
+                <div className="mt-4 flex justify-between items-center">
+                  
+                  <span
+                    className={`
     px-3
     py-1
     rounded-full
     text-sm
     font-medium
+    border
+    border-current1/10
     ${getStatusBadge(order.status)}
   `}
-                >
-                  {order.status}
-                </span>
+                  >
+                    {order.status}
+                  </span>
+                  <div className="mt-4">
+                    <strong>Total:</strong> ₹{order.totalAmount}
+                  </div>
+                </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-4">
+              {/* status updation buttons */}
+              <div className="flex flex-1 flex-col justify-center gap-3 mt-4">
                 <button
                   disabled={order.status !== "pending"}
                   onClick={() => updateStatus(order._id, "accepted")}
@@ -190,8 +208,13 @@ console.log("Search:", searchTerm);
       bg-blue-500
       text-white
       px-4
-      py-2
-      rounded-lg
+      py-1.5
+      rounded-xl
+      border
+      border-current/15
+      hover:bg-blue-600
+      transition-all
+      duration-300
     "
                 >
                   Accept
@@ -204,8 +227,13 @@ console.log("Search:", searchTerm);
       bg-orange-500
       text-white
       px-4
-      py-2
-      rounded-lg
+      py-1.5
+      rounded-xl
+      border
+      border-current/15
+      hover:bg-orange-600
+      transition-all
+      duration-300
     "
                 >
                   Preparing
@@ -215,11 +243,16 @@ console.log("Search:", searchTerm);
                   disabled={order.status !== "preparing"}
                   onClick={() => updateStatus(order._id, "completed")}
                   className="
-      bg-green-500
+      bg-green-600
       text-white
       px-4
-      py-2
-      rounded-lg
+      py-1.5
+      rounded-xl
+      border
+      border-current/15
+      hover:bg-green-700
+      transition-all
+      duration-300
     "
                 >
                   Complete

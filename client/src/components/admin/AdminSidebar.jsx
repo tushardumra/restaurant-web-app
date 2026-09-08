@@ -6,7 +6,7 @@ const AdminSidebar = () => {
       className="
         w-64
         min-h-screen
-        bg-black
+        bg-zinc-900
         text-white
         p-6
       "

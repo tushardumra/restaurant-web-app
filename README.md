@@ -183,6 +183,7 @@ Roles:
 
 - LinkedIn: https://www.linkedin.com/in/tushar-dumra/
 - GitHub: https://github.com/tushardumra
+- Instagram: https://www.instagram.com/my.code_journey/?hl=en
 
 ---
 
